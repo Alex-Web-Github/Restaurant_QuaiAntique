@@ -1,6 +1,6 @@
 # Évaluation en Cours de Formation
 
-![cover](https://github.com/Alex-Web-Github/..../screenshot.png)
+![cover](https://github.com/Alex-Web-Github/Restaurant_QuaiAntique/blob/afcfe1fb3f3b8b3fb93af77671393d38790959c8/Screenshot%202023-05-18%20at%2010-32-41%20Quai%20Antique%20Chamb%C3%A9ry%20-%20Savoie.png)
 
 For more info, visit <https://www.example.com/>.
 
