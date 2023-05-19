@@ -22,6 +22,12 @@ if (!empty($_POST)) {
         // Connexion à la BDD 
         require_once('./lib/pdo.php');
         $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+        //Redirection vers la page 'admin.php' si c'est un Admin, sinon vers la page profil.php (dans si c'est un client)
+        if ($_SESSION['user']['role'] == 'admin') {
+            header('location: ./admin.php');
+        } else {
+            header('location: ./profil.php');
+        }
     }
 } else {
 

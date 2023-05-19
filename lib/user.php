@@ -61,7 +61,4 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
         "email" => $user['email'],
         "role" => $user['role'],
     ];
-
-    //Redirection vers la page Profil
-    header('location: ./profil.php');
 }

@@ -54,8 +54,11 @@ include_once('./templates/header-pages.php');
                     </div>
                 <?php } ?>
                 <?php foreach ($errors as $error) { ?>
-                    <div class="alert alert-success">
+                    <div class="text-center alert alert-danger">
                         <?= $error; ?>
+                        <div>
+                            <a href="./index.php"><- Retour à l'Accueil</a>
+                        </div>
                     </div>
                 <?php } ?>
 
