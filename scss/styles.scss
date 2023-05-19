@@ -85,6 +85,8 @@ $dark: #0f0a05; // pour les titres //
 // Utilities
 @import "../node_modules/bootstrap/scss/utilities/api";
 
+// Google Fonts
+
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:wght@400;600&display=swap");
 
 //
@@ -124,6 +126,9 @@ hr.hr-custom {
   background-color: #906427;
   opacity: 0.5;
   margin: 5rem auto;
+}
+#gallery div.col.inactive {
+  visibility: hidden;
 }
 
 //@import "icon-list"; Décommentez pour permettre l'import de ce Custom Component

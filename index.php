@@ -1,12 +1,12 @@
 <?php
-require_once('./templates/header.php');
-
+session_start();
+require_once('./templates/header-home.php');
+require_once('./lib/pdo.php');
 ?>
-
 
 <hr class="hr-custom">
 
-<section id="galery" class="mb-3">
+<section id="" class="mb-3">
   <div class="container">
     <h2 class="text-center">Nos spécialités</h2>
 
