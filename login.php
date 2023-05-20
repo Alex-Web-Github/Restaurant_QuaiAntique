@@ -1,8 +1,9 @@
 <?php
+session_start();
 $errors = [];
 $messages = [];
-session_start();
-// Rendre la page 'login.php' inaccessible si l'utilisateur est déjà connecté
+
+// Pour rendre la page 'login.php' inaccessible si l'utilisateur est déjà connecté
 if (isset($_SESSION['user'])) {
     header('location: ./profil.php');
 }
@@ -22,17 +23,24 @@ if (!empty($_POST)) {
         // Connexion à la BDD 
         require_once('./lib/pdo.php');
         $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-        //Redirection vers la page 'admin.php' si c'est un Admin, sinon vers la page profil.php (dans si c'est un client)
+
+        // Redirection vers la page 'admin.php' si c'est un Admin, sinon vers la page profil.php (dans si c'est un client)
         if ($_SESSION['user']['role'] == 'admin') {
             header('location: ./admin.php');
         } else {
             header('location: ./profil.php');
         }
+    } else {
+        $errors[] = 'Formulaire incomplet';
     }
-} else {
-
-    $errors[] = 'Formulaire incomplet';
+    
+    // Gestion des messages d'erreurs/succès
+    if (!empty($errors) || (!empty($messages))) {
+        include_once('./lib/error-manager.php');
+    }
 }
+
+$titlePage = 'Connexion';
 include_once('./templates/header-pages.php');
 ?>
 
@@ -46,15 +54,16 @@ include_once('./templates/header-pages.php');
 
                 <!-- Affichage des messages d'erreur et de confirmation -->
                 <?php foreach ($messages as $message) { ?>
-                    <div class="alert alert-success">
+                    <div class="alert alert-info">
                         <?= $message; ?>
                     </div>
                 <?php } ?>
                 <?php foreach ($errors as $error) { ?>
-                    <div class="alert alert-success">
+                    <div class="alert alert-danger">
                         <?= $error; ?>
                     </div>
-                <?php } ?>
+                <?php }
+                $errors = []; ?>
 
                 <!-- Formulaire d'inscription'  -->
                 <div class="container mt-5">

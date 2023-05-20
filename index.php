@@ -6,17 +6,18 @@ require_once('./lib/pdo.php');
 
 <hr class="hr-custom">
 
+
 <section id="" class="mb-3">
   <div class="container">
     <h2 class="text-center">Nos spécialités</h2>
 
     <div class="row mt-5 g-3 row-cols-1 row-cols-md-2 row-cols-lg-3">
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
-      <div class="col"><img class="img-fluid" src="/assets/img/photo1-resto.webp" alt=""></div>
+      <div class="col"><img class="img-fluid rounded" src="./upload/tartiflette-au-reblochon-et-aux-lardons.webp" alt="tartiflette-au-reblochon-et-aux-lardons"></div>
+      <div class="col"><img class="img-fluid rounded" src="/upload/potchon.webp" alt="potchon"></div>
+      <div class="col"><img class="img-fluid rounded" src="/upload/crozets-savoyard.webp" alt="crozets-savoyards"></div>
+      <div class="col"><img class="img-fluid rounded" src="/upload/fondue-trois-fromages.webp" alt="fondue aux 3 fromages"></div>
+      <div class="col"><img class="img-fluid rounded" src="/upload/tarte-aux-myrtilles-facile.webp" alt="tarte-aux-myrtilles"></div>
+      <div class="col"><img class="img-fluid rounded" src="/upload/tartiflette-aux-endives.webp" alt="tartiflette-aux-endives"></div>
     </div>
   </div>
 </section>
@@ -36,7 +37,7 @@ require_once('./lib/pdo.php');
         </p>
 
       </div>
-      <div class="col-md-4"><img class="img-fluid" src="/assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
+      <div class="col-md-4"><img class="img-fluid rounded" src="/assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
 
     </div>
   </div>
@@ -54,7 +55,7 @@ require_once('./lib/pdo.php');
 
       <!-- Menu du Marché -->
       <div class="col">
-        <div class="card border-primary" style="max-width: 18rem;">
+        <div class="card">
           <h4 class="card-header">MENU DU MARCHÉ</h4>
           <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu du Marché">
           <div class="card-body py-3">
@@ -72,7 +73,7 @@ require_once('./lib/pdo.php');
 
       <!-- Menu du Savoyard -->
       <div class="col">
-        <div class="card" style="max-width: 18rem;">
+        <div class="card border-primary">
           <h4 class="card-header">MENU SAVOYARD</h4>
           <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu Savoyard">
           <div class="card-body py-3">
@@ -89,7 +90,7 @@ require_once('./lib/pdo.php');
 
       <!-- Menu Gourmet -->
       <div class="col">
-        <div class="card" style="max-width: 18rem;">
+        <div class="card">
           <h4 class="card-header">MENU GOURMET</h4>
           <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu Gourmet">
           <div class="card-body py-3">

@@ -23,6 +23,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     header('location: ./admin.php');
 }
 
+$titlePage='Gestion des plats';
 require_once('./templates/header-pages.php');
 ?>
 

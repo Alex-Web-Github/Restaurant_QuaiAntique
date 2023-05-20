@@ -1,14 +1,18 @@
 <?php
+session_start();
+$titlePage = 'Inscription';
+include_once('./templates/header-pages.php');
+
+// Initialisation des 'Array' des messages d'erreur et de succès
 $errors = [];
 $messages = [];
-session_start();
+
 // Rendre la page 'inscription.php' inaccessible si l'utilisateur est déjà connecté
 if (isset($_SESSION['user'])) {
     header('location: ./profil.php');
 }
 
 require_once('./lib/user.php');
-
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -20,23 +24,31 @@ if (!empty($_POST)) {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Email invalide';
         }
-        require_once('./lib/pdo.php');
 
+        // Alors on peut commencer l'inscription de cet utilisateur dans la BDD
+        require_once('./lib/pdo.php');
         $res = addUser($pdo, $_POST['email'], $_POST['password']);
+
+        // Vérification si l'inscription s'est bien déroulée
         if ($res) {
             $messages[] = 'Merci pour votre inscription !';
 
             // On connectera l'utilisateur ...
 
         } else {
+            // Problème durant l'ajout en BDD
             $errors[] = 'Une erreur s\'est produite lors de votre inscription';
         }
+    } else {
+        // Problème de remplissage des champs ET/OU des champs sont vides
+        $errors[] = 'Formulaire incomplet';
     }
-} else {
-    $errors[] = 'Formulaire incomplet';
-}
 
-include_once('./templates/header-pages.php');
+    // Gestion des messages d'erreurs/succès
+    if (!empty($errors) || (!empty($messages))) {
+        include_once('./lib/error-manager.php');
+    }
+}
 ?>
 
 <section class="d-flex flex-column vh-100 ">
@@ -46,21 +58,6 @@ include_once('./templates/header-pages.php');
 
                 <!-- Titre -->
                 <h2 class="text-center">Formulaire d'inscription</h2>
-
-                <!-- Affichage des messages d'erreur et de confirmation -->
-                <?php foreach ($messages as $message) { ?>
-                    <div class="alert alert-success">
-                        <?= $message; ?>
-                    </div>
-                <?php } ?>
-                <?php foreach ($errors as $error) { ?>
-                    <div class="text-center alert alert-danger">
-                        <?= $error; ?>
-                        <div>
-                            <a href="./index.php"><- Retour à l'Accueil</a>
-                        </div>
-                    </div>
-                <?php } ?>
 
                 <!-- Formulaire d'inscription'  -->
                 <div class="container mt-5">

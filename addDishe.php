@@ -31,13 +31,11 @@ if ($_POST) {
         $errors[] = 'Le formulaire est incomplet';
     }
 }
-
+$titlePage = 'Gestion des Plats';
 require_once('./templates/header-pages.php');
 ?>
 
-<!--
-<hr class="hr-custom">
--->
+
 <!-- Affichage des messages d'erreur et de confirmation -->
 <?php
 foreach ($messages as $message) { ?>

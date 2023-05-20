@@ -8,19 +8,12 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 // Place any custom JS here
 //
 
-// Pour le 'tooltip' sur les icônes de la barre d'Admin.
-const tooltipTriggerList = document.querySelectorAll(
-  '[data-bs-toggle="tooltip"]'
-);
-const tooltipList = [...tooltipTriggerList].map(
-  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-);
 
 //
 // Code pour le filtrage des plats sur 'card.php'
 //
 window.onload = () => {
-  // pour être sûr que tous les plats seront  chargés dans la page
+  // pour être sûr que tous les plats seront chargés dans la page
   let filters = document.querySelectorAll("#filters li");
   //console.log(filters);
   for (let filter of filters) {
@@ -40,3 +33,14 @@ window.onload = () => {
     });
   }
 };
+
+/*
+const triggerEl = document.querySelector('#myTab button[data-bs-target="#profile"]')
+bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+
+  triggerEl.addEventListener('click', event => {
+    event.preventDefault()
+    tabTrigger.show()
+  })
+})
+*/

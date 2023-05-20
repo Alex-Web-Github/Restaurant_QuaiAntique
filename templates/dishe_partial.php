@@ -1,4 +1,4 @@
-<div class="col ">
+<div class="col" data-<?= $dishe['category'] ?>>
     <div class="card h-100 mb-3">
         <h4 class="card-header fst-italic"><?= $dishe['title']; ?></h4>
         <div class="card-body py-3">

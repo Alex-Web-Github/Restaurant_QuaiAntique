@@ -1,5 +1,6 @@
 <?php
 session_start();
+$titlePage='Profil';
 include_once('./templates/header-pages.php');
 ?>
 
@@ -9,7 +10,7 @@ include_once('./templates/header-pages.php');
             <div class="col-12 col-md-8 col-lg-6 text-center">
 
                 <!-- Titre -->
-                <h2 class="text-center">Votre Profil Utilisateur</h2>
+                <h2 class="text-center">Votre Profil Utilisateur : <?= $_SESSION['user']['role'] ?></h2>
                 <div class="row mt-5">
                     <p class="fw-bold">Votre Email : <?= $_SESSION['user']['email']; ?></p>
                 </div>
