@@ -160,7 +160,7 @@ $users = getUsers($pdo);
                                 <th scope="col">Couverts</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Heure d'arrivée</th>
-                                <th scope="col">Allergies éventuellese</th>
+                                <th scope="col">Allergies éventuelles</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>

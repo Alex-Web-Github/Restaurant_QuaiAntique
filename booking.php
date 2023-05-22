@@ -5,6 +5,7 @@ require_once('./lib/reservations.php');
 $errors = [];
 $messages = [];
 
+
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
     // Vérification si les champs sont définis et NON vides
@@ -36,9 +37,8 @@ if (!empty($_POST)) {
         // Message de confirmation
         $messages[] = 'Votre réservation est enregistrée. Merci et à bientôt chez nous !';
         require_once('./lib/close-pdo.php');
-        // Redirection vers page d'Accueil
-        //header('location: ./index.php');
-
+        //Redirection vers page d'Accueil
+        header('location: ./index.php');
     } else {
         $errors[] = 'Le formulaire est incomplet';
     }
@@ -79,8 +79,8 @@ include_once('./templates/header-pages.php');
 
                 <div class="container mt-5 text-center">
                     <span class="rounded border border-2 border-secondary px-3 py-2">
-                    Nb de places restantes :
-                    <span class="fw-bold" id="seatCapacity">choisir une date</span>
+                        Nb de places restantes :
+                        <span class="fw-bold" id="seatCapacity">choisir une date</span>
                     </span>
                 </div>
 
@@ -106,8 +106,8 @@ include_once('./templates/header-pages.php');
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="hour">Heure d'arrivée</label>
                                 <select id="hour" name="hour" class="form-select" aria-label=".form-select-lg example">
-                                    <option selected>Choisir un créneau</option>
-                                    <option value="12h00-12h15">12h00-12h15</option>
+
+                                    <option value="12h00-12h15" selected>12h00-12h15</option>
                                     <option value="12h15-12h30">12h15-12h30</option>
                                     <option value="12h30-12h45">12h30-12h45</option>
                                     <option value="12h45-13h00">12h45-13h00</option>
@@ -134,7 +134,7 @@ include_once('./templates/header-pages.php');
                             </div>
                         </div>
                         <div class="row">
-                            <a href="" class="">Je ne suis pas encore inscrit</a>
+                            <a href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
                         </div>
                     </form>
                 </div>
