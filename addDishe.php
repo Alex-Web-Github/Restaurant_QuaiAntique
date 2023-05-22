@@ -5,6 +5,9 @@ require_once('./lib/pdo.php');
 $errors[] = "";
 $messages[] = "";
 
+$titlePage = 'Gestion des Plats';
+require_once('./templates/header-pages.php');
+
 if ($_POST) {
     // Vérification si les champs sont définis et NON vides
     if (
@@ -36,8 +39,7 @@ if ($_POST) {
         include_once('./lib/error-manager.php');
     }
 }
-$titlePage = 'Gestion des Plats';
-require_once('./templates/header-pages.php');
+
 ?>
 
 <section class="d-flex vh-100">
@@ -50,7 +52,7 @@ require_once('./templates/header-pages.php');
                 <!-- Formulaire d'ajout de plat  -->
 
                 <form action="" method="POST">
-                    <div class="mb-3">
+                    <div class="mb-3 mt-5">
                         <label class="for-label" for="category">Catégorie du plat</label>
                         <input class="form-control" type="text" name="category" id="category">
                     </div>

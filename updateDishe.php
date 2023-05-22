@@ -2,8 +2,11 @@
 session_start();
 require_once('./lib/dishe.php');
 require_once('./lib/pdo.php');
-$errors[] = "";
-$messages[] = "";
+$errors = [];
+$messages = [];
+
+$titlePage='Gestion des plats';
+require_once('./templates/header-pages.php');
 
 // ON fait d'abord les vérifications avant d'envoyer les modifications
 if ($_POST) {
@@ -56,8 +59,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     header('location: ./admin.php');
 }
 
-$titlePage='Gestion des plats';
-require_once('./templates/header-pages.php');
 ?>
 
 <section class="d-flex vh-100">
@@ -70,7 +71,7 @@ require_once('./templates/header-pages.php');
                 <!-- Formulaire d'ajout de plat  -->
                 <!-- On préremplit les valeurs du formulaire avec celles du plat sélectionné -->
                 <form action="" method="POST">
-                    <div class="mb-3">
+                    <div class="mb-3 mt-5 ">
                         <label class="for-label" for="category">Catégorie du plat</label>
                         <input class="form-control" type="text" name="category" id="category" value="<?= $dishe['category'] ?>">
                     </div>
@@ -88,10 +89,10 @@ require_once('./templates/header-pages.php');
                     </div>
                     <!-- Important !!! -->
                     <input type="hidden" name="id" id="id" value="<?= $dishe['id'] ?>">
-                    <input type="submit" class="btn btn-primary" value="Enregistrer les modifications">
-                    <p class="px-2 py-3">
+                    <input type="submit" class="btn btn-primary my-3" value="Enregistrer les modifications">
+                    <div class="col py-3">
                     <a href="./admin.php">Retour page Admin.</a>
-                </p>
+                </div>
                 </form>
 
             </div>

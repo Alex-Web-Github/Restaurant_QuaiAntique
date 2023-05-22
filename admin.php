@@ -5,26 +5,24 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] == 'client') {
     header('location: ./index.php');
 }
 
-// Gestion des messages d'erreurs/succès
-if (!empty($errors) || (!empty($messages))) {
-    include_once('./lib/error-manager.php');
-}
-
 require_once('./lib/dishe.php');
 require_once('./lib/reservations.php');
 require_once('./lib/user.php');
 require_once('./lib/pdo.php');
+
 $titlePage = 'Administration';
 require_once('./templates/header-pages.php');
-
 //$errors = [];
 //$messages = [];
 // Je récupère tous les plats depuis la BDD avec cette fonction
 $dishes = getDishes($pdo);
 $bookings = getBookings($pdo);
 $users = getUsers($pdo);
-//var_dump($errors);
 
+// Gestion des messages d'erreurs/succès
+if (!empty($errors) || (!empty($messages))) {
+    include_once('./lib/error-manager.php');
+}
 ?>
 
 <!-- Barre d'Administration avec Icones -->
@@ -89,14 +87,13 @@ $users = getUsers($pdo);
 <section id="dishes" class="d-flex flex-column">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
-
             <div class="col-12 col-lg-10 mt-5 ">
                 <!-- Titre -->
                 <h2 class="text-center">Gestion des plats de la carte</h2>
 
                 <!-- Liste des plats -->
-                <div class="row mt-5 py-3">
-                    <table class="table table-stripped">
+                <div class="table-responsive mt-5 py-3">
+                    <table class="table table-sm table-stripped">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -151,8 +148,8 @@ $users = getUsers($pdo);
                 <!-- Titre -->
                 <h2 class="text-center">Gestion des réservations</h2>
                 <!-- Liste des photos -->
-                <div class="row mt-5 py-3">
-                    <table class="table table-stripped">
+                <div class="table-responsive mt-5 py-3">
+                    <table class="table table-sm table-stripped">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -205,8 +202,8 @@ $users = getUsers($pdo);
                 <!-- Titre -->
                 <h2 class="text-center">Gestion des utilisateurs</h2>
                 <!-- Liste des photos -->
-                <div class="row mt-5 py-3">
-                    <table class="table table-stripped">
+                <div class="table-responsive mt-5 py-3">
+                    <table class="table table-sm table-stripped">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -253,8 +250,8 @@ $users = getUsers($pdo);
                 <!-- Titre -->
                 <h2 class="text-center">Gestion de la galerie de photos</h2>
                 <!-- Liste des photos -->
-                <div class="row mt-5 py-3">
-                    <table class="table table-stripped">
+                <div class="table-responsive mt-5 py-3">
+                    <table class="table table-sm table-stripped">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -303,8 +300,8 @@ $users = getUsers($pdo);
                 <!-- Titre -->
                 <h2 class="text-center">Gestion des menus affichés</h2>
                 <!-- Liste des photos -->
-                <div class="row mt-5 py-3">
-                    <table class="table table-stripped">
+                <div class="table-responsive mt-5 py-3">
+                    <table class="table table-sm table-stripped">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>

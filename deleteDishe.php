@@ -2,6 +2,9 @@
 session_start();
 require_once('./lib/dishe.php');
 require_once('./lib/pdo.php');
+$titlePage='Gestion des plats';
+require_once('./templates/header-pages.php');
+
 $errors = [];
 $messages = [];
 
@@ -15,8 +18,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $errors[] = 'Cet URL est invalide !';
     //header('location: ./admin.php');
 }
-$titlePage='Gestion des plats';
-require_once('./templates/header-pages.php');
+
 ?>
 
 <!-- Affichage des messages d'erreur et de confirmation -->

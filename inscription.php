@@ -49,10 +49,9 @@ if (!empty($_POST)) {
         }
     }
 }
-
 ?>
 
-<section class="d-flex flex-column vh-100 ">
+<section class="d-flex flex-column ">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 text-center">
@@ -72,7 +71,7 @@ if (!empty($_POST)) {
                             <label class="for-label" for="password">Votre Mot de Passe</label>
                             <input class="form-control" type="password" name="password" id="password">
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Je m'inscris">
+                        <input type="submit" class="btn btn-primary my-3" value="Je m'inscris">
                     </form>
                 </div>
 

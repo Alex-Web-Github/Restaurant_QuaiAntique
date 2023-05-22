@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+$titlePage = 'Connexion';
+include_once('./templates/header-pages.php');
+
 $errors = [];
 $messages = [];
 
@@ -40,11 +44,9 @@ if (!empty($_POST)) {
     }
 }
 
-$titlePage = 'Connexion';
-include_once('./templates/header-pages.php');
 ?>
 
-<section class="d-flex flex-column vh-100 ">
+<section class="d-flex flex-column ">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 text-center">
@@ -64,8 +66,11 @@ include_once('./templates/header-pages.php');
                             <label class="for-label" for="password">Votre Mot de Passe</label>
                             <input class="form-control" type="password" name="password" id="password">
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Me connecter">
-                        <a class="px-3" href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
+                        <input type="submit" class="btn btn-primary my-3" value="Me connecter">
+                        <div class="col py-3">
+                            <a href="./inscription.php">Je ne suis pas encore inscrit</a>
+                        </div>
+                        
                     </form>
                 </div>
 

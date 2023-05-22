@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once('./lib/reservations.php');
 // Initialisation des messages d'erreur et de succès
 $errors = [];
@@ -38,17 +39,14 @@ if (!empty($_POST)) {
         $messages[] = 'Votre réservation est enregistrée. Merci et à bientôt chez nous !';
         require_once('./lib/close-pdo.php');
         //Redirection vers page d'Accueil
-        header('location: ./index.php');
+        //header('location: ./index.php');
     } else {
         $errors[] = 'Le formulaire est incomplet';
-    }
-    // Gestion des messages d'erreurs/succès
-    if (($errors) || (($messages))) {
-        include_once('./lib/error-manager.php');
     }
 }
 $titlePage = 'Réservation';
 include_once('./templates/header-pages.php');
+
 ?>
 
 <script>
@@ -69,19 +67,25 @@ include_once('./templates/header-pages.php');
     }
 </script>
 
-<section class="d-flex flex-column vh-100 ">
+<section class="d-flex flex-column ">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col col-lg-8">
 
+                <!-- Gestion des messages d'erreurs/succès -->
+                <?php if (($errors) || (($messages))) {
+                    include_once('./lib/error-manager.php');
+                }
+                ?>
+
                 <!-- Titre -->
                 <h2 class="text-center">Faites votre réservation</h2>
 
-                <div class="container mt-5 text-center">
-                    <span class="rounded border border-2 border-secondary px-3 py-2">
-                        Nb de places restantes :
-                        <span class="fw-bold" id="seatCapacity">choisir une date</span>
-                    </span>
+                <div class="container mt-5 text-center rounded border border-1 border-secondary">
+                    <div class="col my-2 my-sm-3">
+                    Places disponibles :
+                    <p class="fw-bold m-0" id="seatCapacity" style="color: #906427;">choisir une date...</p>
+                    </div>
                 </div>
 
                 <!-- Formulaire de réservation  -->
@@ -100,9 +104,33 @@ include_once('./templates/header-pages.php');
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="seats">Nombre de couverts</label>
+                                <select id="seats" name="seats" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                            <!--
                                 <input class="form-control" type="number" name="seats" id="seats" value="4" min="1" max="20">
                             </div>
-
+-->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="hour">Heure d'arrivée</label>
                                 <select id="hour" name="hour" class="form-select" aria-label=".form-select-lg example">
@@ -125,15 +153,15 @@ include_once('./templates/header-pages.php');
                             </div>
                         </div>
 
-                        <div class="row my-3">
-                            <div class="col-6 col-md-6">
+                        <div class="row my-sm-3">
+                            <div class="col-12 col-md-4 mt-3">
                                 <input type="submit" class="btn btn-primary" value="Je réserve">
                             </div>
-                            <div class="col-6 col-md-6">
-                                <a href="./login.php" type="button" class="btn btn-outline-primary">Je me connecte</a>
+                            <div class="col-12 col-md-8 mt-3">
+                                <a href="./login.php" type="button" class="btn btn-outline-primary ">Je me connecte</a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-3">
                             <a href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
                         </div>
                     </form>

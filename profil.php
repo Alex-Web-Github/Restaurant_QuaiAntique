@@ -4,7 +4,7 @@ $titlePage='Profil';
 include_once('./templates/header-pages.php');
 ?>
 
-<section class="d-flex flex-column vh-100">
+<section class="d-flex flex-column ">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-10 col-md-8 col-lg-6 text-center">
