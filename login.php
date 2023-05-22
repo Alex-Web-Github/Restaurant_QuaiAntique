@@ -33,7 +33,7 @@ if (!empty($_POST)) {
     } else {
         $errors[] = 'Formulaire incomplet';
     }
-    
+
     // Gestion des messages d'erreurs/succès
     if (!empty($errors) || (!empty($messages))) {
         include_once('./lib/error-manager.php');
@@ -52,19 +52,6 @@ include_once('./templates/header-pages.php');
                 <!-- Titre -->
                 <h2 class="text-center">Formulaire de connexion</h2>
 
-                <!-- Affichage des messages d'erreur et de confirmation -->
-                <?php foreach ($messages as $message) { ?>
-                    <div class="alert alert-info">
-                        <?= $message; ?>
-                    </div>
-                <?php } ?>
-                <?php foreach ($errors as $error) { ?>
-                    <div class="alert alert-danger">
-                        <?= $error; ?>
-                    </div>
-                <?php }
-                $errors = []; ?>
-
                 <!-- Formulaire d'inscription'  -->
                 <div class="container mt-5">
 
@@ -78,7 +65,7 @@ include_once('./templates/header-pages.php');
                             <input class="form-control" type="password" name="password" id="password">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Me connecter">
-                        <a href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
+                        <a class="px-3" href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
                     </form>
                 </div>
 
@@ -87,7 +74,6 @@ include_once('./templates/header-pages.php');
     </div>
 </section>
 </section>
-
 
 <?php
 include_once('./templates/footer.php');

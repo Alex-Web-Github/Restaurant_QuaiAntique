@@ -1,7 +1,6 @@
 <!-- Affichage des messages d'erreur et de confirmation -->
-
 <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-info">
+    <div class="text-center alert alert-info">
         <?= $message; ?>
     </div>
 <?php } ?>

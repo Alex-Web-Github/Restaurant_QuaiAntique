@@ -42,13 +42,14 @@ if (!empty($_POST)) {
     } else {
         // Problème de remplissage des champs ET/OU des champs sont vides
         $errors[] = 'Formulaire incomplet';
-    }
 
-    // Gestion des messages d'erreurs/succès
-    if (!empty($errors) || (!empty($messages))) {
-        include_once('./lib/error-manager.php');
+        //Gestion des messages d'erreurs/succès
+        if (!empty($errors) || (!empty($messages))) {
+            include_once('./lib/error-manager.php');
+        }
     }
 }
+
 ?>
 
 <section class="d-flex flex-column vh-100 ">

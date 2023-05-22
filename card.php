@@ -16,18 +16,17 @@ $dishes = getDishes($pdo);
     <!-- Les Filtres -->
     <div class="row mt-5 navbar justify-content-center mt5">
 
-        <ul id="filters" class=" nav nav-pills justify-content-center mb-6">
-            <li class="nav-item"><a id="all" class="nav-link active ">Tout</a></li>
+        <ul id="filters" class="nav nav-pills justify-content-center mb-6">
+            <li class="nav-item"><a id="all" class="nav-link active">Tout</a></li>
             <li class="nav-item"><a id="entrées" class="nav-link">Entrées</a></li>
             <li class="nav-item"><a id="plats" class="nav-link">Plats</a></li>
             <li class="nav-item"><a id="desserts" class="nav-link">Desserts</a></li>
         </ul>
 
         <!-- Les plats -->
-        <div id="gallery" class="row mt-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div id="gallery" class="row mt-5 row-cols-1 row-cols-sm-2 row-cols-md-3  g-4">
 
             <?php foreach ($dishes as $key => $dishe) {
-                //echo ($dishe['category']);
                 include('./templates/dishe_partial.php');
             }
             ?>

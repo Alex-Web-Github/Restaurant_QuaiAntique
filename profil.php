@@ -7,12 +7,18 @@ include_once('./templates/header-pages.php');
 <section class="d-flex flex-column vh-100">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 text-center">
+            <div class="col-10 col-md-8 col-lg-6 text-center">
 
                 <!-- Titre -->
-                <h2 class="text-center">Votre Profil Utilisateur : <?= $_SESSION['user']['role'] ?></h2>
+                <h2 class="text-center">Bienvenue</h2>
                 <div class="row mt-5">
+                    <p class="fw-bold">Votre profil utilisateur est : <?= $_SESSION['user']['role']; ?></p>
+                </div>
+                <div class="row">
                     <p class="fw-bold">Votre Email : <?= $_SESSION['user']['email']; ?></p>
+                </div>
+                <div class="row">
+                    <p class="fw-bold">Vos allergies connues : -- </p>
                 </div>
 
                 <div class="row g-4 mt-3">

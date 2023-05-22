@@ -18,9 +18,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 $titlePage='Gestion des plats';
 require_once('./templates/header-pages.php');
 ?>
-<!--
-<hr class="hr-custom">
--->
+
 <!-- Affichage des messages d'erreur et de confirmation -->
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success">

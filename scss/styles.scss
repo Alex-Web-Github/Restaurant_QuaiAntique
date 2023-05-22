@@ -29,15 +29,14 @@ $enable-shadows: true;
 
 $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
-  // Customize some defaults
-  $body-color: #191715;
-  $body-bg: #f5f5f5;
-  $border-radius: 0.4rem;
-  $success: #392c1e;
-  $primary: #906427;
-  $secondary: #b6a797;
-  $dark: #0f0a05; // pour les titres //
-  
+// Customize some defaults
+$body-color: #191715;
+$body-bg: #f5f5f5;
+$border-radius: 0.4rem;
+$success: #392c1e;
+$primary: #906427;
+$secondary: #b6a797;
+$dark: #0f0a05; // pour les titres //
 
 // Required
 @import "../node_modules/bootstrap/scss/functions";
@@ -86,33 +85,28 @@ $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
 // Google Fonts
 
-@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:wght@400;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import "https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:wght@400;600&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap";
 
 //
 // Custom styles
 //
-
-/* 
-// Règle CSS inclue à l'import
-body {
-  padding: 1.5rem;
-} */
-
+.row {
+  margin-right: 0; // Annule flottement horizontal (desktop et mobile)
+  margin-left: 0; // Annule flottement horizontal (desktop et mobile)
+}
 .navbar-nav {
-	--bs-nav-link-padding-x: 0;
-	--bs-nav-link-padding-y: 1rem;
+  --bs-nav-link-padding-x: 0;
+  --bs-nav-link-padding-y: 1rem;
 }
-
 .navbar-dark {
-	--bs-navbar-color: rgba(255, 255, 255, 0.55);
-	--bs-navbar-hover-color: #906427;
-	--bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-	--bs-navbar-active-color: #906427;
-	--bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-	--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-color: rgba(255, 255, 255, 0.75);
+  --bs-navbar-hover-color: #906427;
+  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
+  --bs-navbar-active-color: #906427;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
-
 body {
   font-family: "Hind Madurai", sans-serif;
 }
@@ -122,10 +116,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lora", serif;
+  font-family: Lora, serif;
 }
 header h1 {
-  font-family: 'Tangerine', cursive;
+  font-family: Tangerine, cursive;
 }
 
 .text-white {
@@ -134,19 +128,23 @@ header h1 {
 .text-white-75 {
   color: rgb(255, 255, 255, 0.75);
 }
-p.text-xs {
+
+.text-xs {
   font-size: 0.9rem;
 }
-hr.hr-custom {
+.hr-custom {
+  width: 20rem;
+  margin: 5rem auto;
+  background-color: #906427;
   border: 1px solid #906427;
   border-radius: 5px;
-  width: 20rem;
-  background-color: #906427;
   opacity: 0.5;
-  margin: 5rem auto;
 }
-#gallery div.col.inactive {
-  visibility: hidden;
+#gallery .col.inactive {
+  display: none;
 }
 
+ul#filters li a {
+  cursor: pointer;
+}
 //@import "icon-list"; Décommentez pour permettre l'import de ce Custom Component

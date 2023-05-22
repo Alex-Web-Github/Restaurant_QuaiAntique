@@ -30,24 +30,14 @@ if ($_POST) {
     } else {
         $errors[] = 'Le formulaire est incomplet';
     }
+
+    // Gestion des messages d'erreurs/succès
+    if (!empty($errors) || (!empty($messages))) {
+        include_once('./lib/error-manager.php');
+    }
 }
 $titlePage = 'Gestion des Plats';
 require_once('./templates/header-pages.php');
-?>
-
-
-<!-- Affichage des messages d'erreur et de confirmation -->
-<?php
-foreach ($messages as $message) { ?>
-    <div class="alert alert-success" role="alert">
-        <?= $message; ?>
-    </div>
-<?php } ?>
-<?php foreach ($errors as $error) { ?>
-    <div class="text-center alert alert-danger" role="alert">
-        <?= $error; ?>
-    </div>
-<?php }
 ?>
 
 <section class="d-flex vh-100">

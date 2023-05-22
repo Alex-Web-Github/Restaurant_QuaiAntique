@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `dishes` (
-  `id` int NOT NULL,
-  `category` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `id` int NOT NULL PRIMARY KEY,
+  `category` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `description` text,
   `price` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 
 
 --
 -- Déchargement des données de la table `dishes`
@@ -57,11 +57,11 @@ INSERT INTO `dishes` (`id`, `category`, `title`, `description`, `price`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int NOT NULL PRIMARY KEY,
+  `email` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `users`

@@ -12,34 +12,20 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = strip_tags($_GET['id']);
     $dishe = getDisheById($pdo, $id);
 
-    // ON vérifie si le plat existe dans la BDD
+    // On vérifie si le plat existe dans la BDD
     if (!$dishe) {
         $errors[] = 'Cet Id n\'existe pas !';
         header('location: ./admin.php');
     } else {
     }
 } else {
-    $errors[] = 'Cet URL est invalide !';
+    $errors[] = 'URL invalide !';
     header('location: ./admin.php');
 }
 
-$titlePage='Gestion des plats';
+$titlePage = 'Gestion des plats';
 require_once('./templates/header-pages.php');
 ?>
-
-
-<!-- Affichage des messages d'erreur et de confirmation 
-<?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success">
-        <?= $message; ?>
-    </div>
-<?php } ?>
-<?php foreach ($errors as $error) { ?>
-    <div class="text-center alert alert-danger">
-        <?= $error; ?>
-    </div>
-<?php } ?>
--->
 
 <section class="d-flex vh-100">
     <div class="container ">

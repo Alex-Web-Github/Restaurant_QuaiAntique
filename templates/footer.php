@@ -1,12 +1,11 @@
 </main>
 
 <footer class="py-7 py-md-9 ">
-
     <div class="container-fluid  bg-success">
         <div class="container-lg mt-5 py-3 px-3">
-            <div class="row gx-7">
+            <div class="row gx-6">
                 <!-- presentation -->
-                <div class="col-12 col-sm-4 px-md-5">
+                <div class="col-12 col-md-4 px-md-5 mb-3 mb-md-0">
                     <h5 class="text-white-75 fw-light pb-2">
                         Quai Antique
                     </h5>
@@ -16,7 +15,7 @@
                 </div>
 
                 <!-- contact -->
-                <div class="col-12 col-sm-4 px-md-5">
+                <div class="col-12 col-md-4 col-sm-6 px-md-5">
                     <h5 class="text-white-75 fw-light pb-2">
                         Nous contacter
                     </h5>
@@ -40,7 +39,7 @@
 
                 </div>
                 <!-- open hours -->
-                <div class="col-12 col-sm-4 px-md-5">
+                <div class="col-12 col-md-4 col-sm-6 px-md-5">
                     <h5 class="text-white-75 pb-2 fw-light">
                         Heures d'ouvertures
                     </h5>
@@ -65,8 +64,8 @@
     </div>
 
 </footer>
-
-<script type="module" src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script type="module" src="./js/main.js"></script>
 </body>
 
 </html>

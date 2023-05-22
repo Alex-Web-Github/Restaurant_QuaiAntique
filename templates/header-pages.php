@@ -8,18 +8,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
     <title>Restaurant Quai Antique | Chambéry - Savoie</title>
 </head>
 
 <body style="padding : 0;">
 
-    <nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 80%, rgba(255,255,255,0) 100%);">
+<nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 80%, rgba(255,255,255,0) 100%);">
         <div class="container">
 
             <!-- MOBILE Navbar brand -->
             <a class="navbar-brand d-lg-none" href="./index.php">
-                <img src="/assets/img/Logo_Quai-Antique-gold.png" alt="logo restaurant Quai Antique" width="auto" height="30px">
+                <img src="./assets/img/Logo_Quai-Antique-gold.png" alt="logo restaurant Quai Antique" width="auto" height="30px">
             </a>
 
             <!-- Navbar toggler -->
@@ -57,7 +58,8 @@
                         <a class="nav-link" href="./booking.php">Réservation</a>
                     </li>
                     <?php if (!isset($_SESSION['user'])) { ?>
-                        <li class="nav-item"><a href="./login.php" class="nav-link">Connexion</a></li>
+                        <li class="nav-item"><a href="./login.php" class="nav-link">
+                                Connexion</a></li>
                     <?php } else { ?>
                         <li class="nav-item ">
                         <li class="nav-item"><a href="./logout.php" class="nav-link">Déconnexion</a></li>

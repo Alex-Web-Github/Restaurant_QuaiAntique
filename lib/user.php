@@ -1,5 +1,16 @@
 <?php
 //
+// Requête pour afficher TOUS les utilisateurs
+//
+function getUsers(PDO $pdo)
+{
+    $sql = "SELECT * FROM `users` ";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    return $query->fetchAll(pdo::FETCH_ASSOC);
+}
+
+//
 // Pour ajouter d'un nouvel utilisateur
 //
 function addUser(PDO $pdo, string $email, string $password)
@@ -28,11 +39,9 @@ function addUser(PDO $pdo, string $email, string $password)
         "email" => $email,
         "role" => $role,
     ];
-
     //Redirection vers la page Profil
     header('location: ./login.php');
 }
-
 //
 // Pour vérifier si la personne est déjà inscrite ou pas
 //

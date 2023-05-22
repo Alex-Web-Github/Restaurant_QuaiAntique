@@ -6,22 +6,26 @@ require_once('./lib/pdo.php');
 
 <hr class="hr-custom">
 
-
-<section id="" class="mb-3">
+<section class="mb-3">
   <div class="container">
     <h2 class="text-center">Nos spécialités</h2>
 
-    <div class="row mt-5 g-3 row-cols-1 row-cols-md-2 row-cols-lg-3">
-      <div class="col"><img class="img-fluid rounded" src="./upload/tartiflette-au-reblochon-et-aux-lardons.webp" alt="tartiflette-au-reblochon-et-aux-lardons"></div>
-      <div class="col"><img class="img-fluid rounded" src="/upload/potchon.webp" alt="potchon"></div>
-      <div class="col"><img class="img-fluid rounded" src="/upload/crozets-savoyard.webp" alt="crozets-savoyards"></div>
-      <div class="col"><img class="img-fluid rounded" src="/upload/fondue-trois-fromages.webp" alt="fondue aux 3 fromages"></div>
-      <div class="col"><img class="img-fluid rounded" src="/upload/tarte-aux-myrtilles-facile.webp" alt="tarte-aux-myrtilles"></div>
-      <div class="col"><img class="img-fluid rounded" src="/upload/tartiflette-aux-endives.webp" alt="tartiflette-aux-endives"></div>
+    <div class="row gy-3 mt-5  row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="La tartiflette-au-reblochon-et-aux-lardons" src="./upload/tartiflette-au-reblochon-et-aux-lardons.webp" alt="tartiflette-au-reblochon-et-aux-lardons"></div>
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="le Potchon" src="./upload/potchon.webp" alt="potchon"></div>
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="Les crozets-savoyards" src="./upload/crozets-savoyard.webp" alt="crozets-savoyards"></div>
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="La fondue aux 3 fromages" src="./upload/fondue-trois-fromages.webp" alt="fondue aux 3 fromages"></div>
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="La tarte-aux-myrtilles" src="./upload/tarte-aux-myrtilles-facile.webp" alt="tarte-aux-myrtilles"></div>
+      <div class="col text-center px-3"><img class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="La tartiflette-aux-endives" src="./upload/tartiflette-aux-endives.webp" alt="tartiflette-aux-endives"></div>
     </div>
   </div>
 </section>
 
+<section class="mb-3">
+  <div class="container text-center mt-5">
+    <a class="btn btn-primary btn-lg mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
+  </div>
+</section>
 <hr class="hr-custom">
 
 <section id="about" class="mb-3">
@@ -37,7 +41,7 @@ require_once('./lib/pdo.php');
         </p>
 
       </div>
-      <div class="col-md-4"><img class="img-fluid rounded" src="/assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
+      <div class="col-md-4"><img class="img-fluid rounded" src="./assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
 
     </div>
   </div>
@@ -51,7 +55,7 @@ require_once('./lib/pdo.php');
     <h2 class="text-center">Les Menus</h2>
 
     <!-- Contenu -->
-    <div class="row mt-5 row-cols-1 row-cols-md-3 g-4">
+    <div class="row mx-0 mt-5 row-cols-1 row-cols-md-3 g-4">
 
       <!-- Menu du Marché -->
       <div class="col">

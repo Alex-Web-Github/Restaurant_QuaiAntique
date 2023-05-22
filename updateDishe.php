@@ -60,24 +60,6 @@ $titlePage='Gestion des plats';
 require_once('./templates/header-pages.php');
 ?>
 
-<!--
-<hr class="hr-custom">
--->
-<!-- Affichage des messages d'erreur et de confirmation 
-<?php
-foreach ($messages as $message) { ?>
-    <div class="alert alert-success" role="alert">
-        <?= $message; ?>
-    </div>
-<?php } ?>
-<?php foreach ($errors as $error) { ?>
-    <div class="text-center alert alert-danger" role="alert">
-        <?= $error; ?>
-    </div>
-<?php }
-?>
--->
-
 <section class="d-flex vh-100">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
