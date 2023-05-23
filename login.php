@@ -1,11 +1,9 @@
 <?php
 session_start();
-
-$titlePage = 'Connexion';
-include_once('./templates/header-pages.php');
-
 $errors = [];
 $messages = [];
+$titlePage = 'Connexion';
+require_once('./templates/header-pages.php');
 
 // Pour rendre la page 'login.php' inaccessible si l'utilisateur est déjà connecté
 if (isset($_SESSION['user'])) {
@@ -22,17 +20,13 @@ if (!empty($_POST)) {
 
         // Vérification si l'email est bien un email (le type 'email' n'est pas suffisant car modifiable en Front avec l'inspecteur de code)
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Email invalide';
-        }
-        // Connexion à la BDD 
-        require_once('./lib/pdo.php');
-        $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-
-        // Redirection vers la page 'admin.php' si c'est un Admin, sinon vers la page profil.php (dans si c'est un client)
-        if ($_SESSION['user']['role'] == 'admin') {
-            header('location: ./admin.php');
+            $errors[] = 'Format d\'Email invalide';
         } else {
-            header('location: ./profil.php');
+            // Email valide, on lance ensuite la vérification du Password
+            // Connexion à la BDD 
+            require_once('./lib/pdo.php');
+            // Vérification du Password
+            $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
         }
     } else {
         $errors[] = 'Formulaire incomplet';
@@ -43,7 +37,6 @@ if (!empty($_POST)) {
         include_once('./lib/error-manager.php');
     }
 }
-
 ?>
 
 <section class="d-flex flex-column ">
@@ -70,7 +63,7 @@ if (!empty($_POST)) {
                         <div class="col py-3">
                             <a href="./inscription.php">Je ne suis pas encore inscrit</a>
                         </div>
-                        
+
                     </form>
                 </div>
 

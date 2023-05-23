@@ -47,6 +47,9 @@ function addUser(PDO $pdo, string $email, string $password)
 //
 function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
 {
+    $errors = [];
+    $messages = [];
+    
     // On sélectionne le $user dont l'email est celui envoyé par le formulaire : si son password correspond à celui envoyé c'est OK sinon -> message d'erreur.
     $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
 
@@ -58,22 +61,29 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
     // la fonction "password_verify" ci-dessous permet de vérifier le mot de passe rentré avec celui "hashé" en BDD
     if (!$user) {
         $errors[] = 'L\'utilisateur et/ou le mot de passe sont incorrects';
-        header('location: ./login.php');
-        //die('L\'utilisateur et/ou le mot de passe sont incorrects');
+    } else {
+        // Utilisateur existe, on vérifie ensuite le mot de passe
+        if (!password_verify($password, $user['password'])) {
+            $errors[] = 'L\'utilisateur et/ou le mot de passe sont incorrects';
+        } else {
+            // Ici les identifiants sont corrects, on peut stocker ses infos dans un cookie de Session (pas le MdP !!!)
+            $_SESSION['user'] = [
+                "id" => $user['id'],
+                "email" => $user['email'],
+                "role" => $user['role'],
+            ];
 
+            // Redirection vers la page 'admin.php' si c'est un Admin...
+            if ($_SESSION['user']['role'] == 'admin') {
+                header('location: ./admin.php');
+            } else {
+                // Sinon vers la page profil.php si c'est un Client)
+                header('location: ./profil.php');
+            }
+        }
     }
-    // Utilisateur existe, on vérifie ensuite le mot de pass
-    if (!password_verify($password, $user['password'])) {
-        $errors[] = 'L\'utilisateur et/ou le mot de passe sont incorrects';
-        header('location: ./login.php');
-        //die('L\'utilisateur et/ou le mot de passe sont incorrects');
-
+    // Gestion des messages d'erreurs/succès
+    if (!empty($errors) || (!empty($messages))) {
+        include_once('./lib/error-manager.php');
     }
-
-    // Ici les identifiants sont corrects, on peut stocker ses infos dans un cookie de Session (pas le MdP !!!)
-    $_SESSION['user'] = [
-        "id" => $user['id'],
-        "email" => $user['email'],
-        "role" => $user['role'],
-    ];
 }

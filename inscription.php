@@ -31,9 +31,7 @@ if (!empty($_POST)) {
 
         // Vérification si l'inscription s'est bien déroulée
         if ($res) {
-            $messages[] = 'Merci pour votre inscription !';
-
-            // On connectera l'utilisateur ...
+            $messages[] = 'Merci pour votre inscription !';         
 
         } else {
             // Problème durant l'ajout en BDD
@@ -42,11 +40,10 @@ if (!empty($_POST)) {
     } else {
         // Problème de remplissage des champs ET/OU des champs sont vides
         $errors[] = 'Formulaire incomplet';
-
-        //Gestion des messages d'erreurs/succès
-        if (!empty($errors) || (!empty($messages))) {
-            include_once('./lib/error-manager.php');
-        }
+    }
+    //Gestion des messages d'erreurs/succès
+    if (!empty($errors) || (!empty($messages))) {
+        include_once('./lib/error-manager.php');
     }
 }
 ?>
