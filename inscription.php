@@ -31,7 +31,7 @@ if (!empty($_POST)) {
 
         // Vérification si l'inscription s'est bien déroulée
         if ($res) {
-            $messages[] = 'Merci pour votre inscription !';         
+            $messages[] = 'Merci pour votre inscription ! Vous pouvez vous connecter';                
 
         } else {
             // Problème durant l'ajout en BDD

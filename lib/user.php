@@ -49,7 +49,7 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
 {
     $errors = [];
     $messages = [];
-    
+
     // On sélectionne le $user dont l'email est celui envoyé par le formulaire : si son password correspond à celui envoyé c'est OK sinon -> message d'erreur.
     $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
 
@@ -72,14 +72,8 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
                 "email" => $user['email'],
                 "role" => $user['role'],
             ];
-
-            // Redirection vers la page 'admin.php' si c'est un Admin...
-            if ($_SESSION['user']['role'] == 'admin') {
-                header('location: ./admin.php');
-            } else {
-                // Sinon vers la page profil.php si c'est un Client)
-                header('location: ./profil.php');
-            }
+            header('location: ./profil.php');
+            
         }
     }
     // Gestion des messages d'erreurs/succès

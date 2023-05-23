@@ -10,7 +10,7 @@
 </head>
 
 <body style="padding : 0;">
-    <nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: rgba(0,0,0,0.85);">
+    <nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: #191715e3;">
         <div class="container">
 
             <!-- MOBILE Navbar brand -->

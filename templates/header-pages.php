@@ -15,7 +15,7 @@
 
 <body style="padding : 0;">
 
-<nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 80%, rgba(255,255,255,0) 100%);">
+<nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: #191715e3;">
         <div class="container">
 
             <!-- MOBILE Navbar brand -->
