@@ -27,7 +27,7 @@
             <div class="navbar-collapse collapse" id="navbarCollapse">
 
                 <!-- Navbar nav LEFT -->
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="./index.php">Accueil</a>
                     </li>
@@ -41,11 +41,6 @@
                         <a class="nav-link " href="./card.php">La Carte</a>
                     </li>
                 </ul>
-
-                <!-- Navbar brand -->
-                <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="./index.html">
-                    <img src="/assets/img/Logo_Quai-Antique-blanc.png" alt="logo restaurant Quai Antique" width="auto" height="00px">
-                </a>
 
                 <!-- Navbar nav RIGHT -->
                 <ul class="navbar-nav">
