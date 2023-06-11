@@ -1,43 +1,43 @@
 <?php session_start(); ?>
 
 <?php ob_start(); ?>
-  <header style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(0,0,0,1) 80%, rgba(57,44,30,1) 100%); position: relative; z-index: 0;">
-    <div class="d-flex flex-column min-vh-100 pt-10 pt-md-8 pb-7 pb-md-0">
-      <div class="container my-auto">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-lg-6 text-center">
+<header style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(0,0,0,1) 80%, rgba(57,44,30,1) 100%); position: relative; z-index: 0;">
+  <div class="d-flex flex-column min-vh-100 pt-10 pt-md-8 pb-7 pb-md-0">
+    <div class="container my-auto">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 text-center">
 
-            <!-- pré-titre -->
-            <h4 class="text-white">
-              <span class="text-secondary fw-light">Spécialités Savoyardes</span> depuis 1950
-            </h4>
+          <!-- pré-titre -->
+          <h4 class="text-white">
+            <span class="text-secondary fw-light">Spécialités Savoyardes</span> depuis 1950
+          </h4>
 
-            <!--Titre -->
-            <h1 class="display-1 text-white mb-4">
-              Quai Antique
-            </h1>
+          <!--Titre -->
+          <h1 class="display-1 text-white mb-4">
+            Quai Antique
+          </h1>
 
-            <!-- Sous-titre -->
-            <p class="fs-5 text-center fw-lighter text-white mb-7">
-              Vivez une expérience gastronomique inoubliable.
-            </p>
+          <!-- Sous-titre -->
+          <p class="fs-5 text-center fw-lighter text-white mb-7">
+            Vivez une expérience gastronomique inoubliable.
+          </p>
 
-            <!-- Buttons -->
-            <div class="mt-5 d-grid gap-4 d-sm-block">
-              <a class="btn btn-primary mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
-              <a class="btn btn-outline-light  mx-3" href="./card.php" type="button">Voir la carte</a>
-            </div>
-
+          <!-- Buttons -->
+          <div class="mt-5 d-grid gap-4 d-sm-block">
+            <a class="btn btn-primary mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
+            <a class="btn btn-outline-light  mx-3" href="./card.php" type="button">Voir la carte</a>
           </div>
+
         </div>
       </div>
+    </div>
 
-    </div>
-    <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100vh; overflow: hidden; z-index: -100;">
-      <div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(./assets/img/photo1-resto.webp); height: 100%; overflow: hidden; pointer-events: none; margin-top: 0px; opacity: 0.6;"></div>
-    </div>
-  </header>
-<?php $header=ob_get_clean(); ?>
+  </div>
+  <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100vh; overflow: hidden; z-index: -100;">
+    <div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(./assets/img/photo1-resto.webp); height: 100%; overflow: hidden; pointer-events: none; margin-top: 0px; opacity: 0.6;"></div>
+  </div>
+</header>
+<?php $header = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
 
@@ -92,13 +92,13 @@
     <h2 class="text-center">Les Menus</h2>
 
     <!-- Contenu -->
-    <div class="row mx-0 mt-5 row-cols-1 row-cols-md-3 g-4">
+    <div class="row mx-0 mt-5 row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
       <!-- Menu du Marché -->
       <div class="col">
         <div class="card">
-          <h4 class="card-header">MENU DU MARCHÉ</h4>
-          <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu du Marché">
+          <h4 class="card-header text-center">MENU DU MARCHÉ</h4>
+          <img src="./assets/img/potchon.webp" class="img-fluid" alt="Menu du Marché">
           <div class="card-body py-3">
             <p class="text-center fst-italic">Menu concocté avec les ingrédients de saison, achetés au marché Bio.</p>
             <h5 class="card-title ">Formule dîner</h5>
@@ -115,8 +115,8 @@
       <!-- Menu du Savoyard -->
       <div class="col">
         <div class="card border-primary">
-          <h4 class="card-header">MENU SAVOYARD</h4>
-          <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu Savoyard">
+          <h4 class="card-header text-center">MENU SAVOYARD</h4>
+          <img src="./assets/img/fondue-trois-fromages.webp" class="img-fluid" alt="Menu Savoyard">
           <div class="card-body py-3">
             <p class="text-center fst-italic">Fondue ou raclette aux 3 fromages avec charcuterie AOP, vin de Pays.</p>
             <h5 class="card-title">Formule dîner</h5>
@@ -132,8 +132,8 @@
       <!-- Menu Gourmet -->
       <div class="col">
         <div class="card">
-          <h4 class="card-header">MENU GOURMET</h4>
-          <img src="./assets/img/photo1-resto.webp" class="card-img-top img-fluid" alt="Menu Gourmet">
+          <h4 class="card-header text-center">MENU GOURMET</h4>
+          <img src="./assets/img/tartiflette-au-reblochon-et-aux-lardons.webp" class="img-fluid" alt="Menu Gourmet">
           <div class="card-body py-3">
             <p class="text-center fst-italic">Truite du lac et poulet de Bresse (sauce aux champignons), vin de Pays.</p>
             <h5 class="card-title">Formule dîner</h5>
