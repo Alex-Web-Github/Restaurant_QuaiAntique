@@ -1,5 +1,5 @@
 <?php
-require_once('./lib/pdo.php');
+require_once('./src/pdo.php');
 
 $q = $_GET['q'];
 

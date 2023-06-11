@@ -1,16 +1,11 @@
 <?php
 session_start();
-require_once('./lib/dishe.php');
-require_once('./lib/pdo.php');
+require_once('./src/dishe.php');
 $errors = [];
 $messages = [];
 
-$titlePage='Gestion des plats';
-require_once('./templates/header-pages.php');
-
-// ON fait d'abord les vérifications avant d'envoyer les modifications
+// On fait d'abord les vérifications avant d'envoyer les modifications
 if ($_POST) {
-
     // Vérification si les champs sont définis et NON vides
     if (
         isset($_POST['id']) && !empty($_POST['id'])
@@ -27,15 +22,11 @@ if ($_POST) {
         $price = strip_tags($_POST['price']);
 
         // traitement des données du formulaire
-        require_once('./lib/pdo.php');
+        require_once('./src/pdo.php');
         updateDishe($pdo, $id, $category, $title, $description, $price);
         // Message de confirmation
         $messages[] = 'Votre plat à été modifié.';
-
-        //require_once('./lib/close-pdo.php');
-
-        // Redirection vers page d'Accueil
-        header('location: ./admin.php');
+        require_once('./src/close-pdo.php');
     } else {
         $errors[] = 'Le formulaire est incomplet';
     }
@@ -46,62 +37,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     // "Nettoyage" l'Id envoyé
     $id = strip_tags($_GET['id']);
+    require_once('./src/pdo.php');
     $dishe = getDisheById($pdo, $id);
+    require_once('./src/close-pdo.php');
 
-    // ON vérifie si le plat existe dans la BDD
+    // On vérifie si le plat existe dans la BDD
     if (!$dishe) {
-        $errors[] = 'Cet Id n\'existe pas !';
-        header('location: ./admin.php');
-    } else {
+        // Cet Id n\'existe pas
+        header('location: ./404.php');
     }
 } else {
-    $errors[] = 'Cet URL est invalide !';
-    header('location: ./admin.php');
+    // Cet URL est invalide
+    header('location: ./404.php');
 }
 
-?>
-
-<section class="d-flex vh-100">
-    <div class="container ">
-        <div class="row mt-5 justify-content-center">
-            <div class="col-12 col-md-10">
-                <!-- Titre -->
-                <h2 class="text-center">Mettre à jour un plat</h2>
-
-                <!-- Formulaire d'ajout de plat  -->
-                <!-- On préremplit les valeurs du formulaire avec celles du plat sélectionné -->
-                <form action="" method="POST">
-                    <div class="mb-3 mt-5 ">
-                        <label class="for-label" for="category">Catégorie du plat</label>
-                        <input class="form-control" type="text" name="category" id="category" value="<?= $dishe['category'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="title">Intitulé du plat</label>
-                        <input class="form-control" type="text" name="title" id="title" value="<?= $dishe['title'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="description">Description</label>
-                        <input class="form-control" type="text" name="description" id="description" value="<?= $dishe['description'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="price">Tarif</label>
-                        <input class="form-control" type="text" name="price" id="price" value="<?= $dishe['price'] ?>">
-                    </div>
-                    <!-- Important !!! -->
-                    <input type="hidden" name="id" id="id" value="<?= $dishe['id'] ?>">
-                    <input type="submit" class="btn btn-primary my-3" value="Enregistrer les modifications">
-                    <div class="col py-3">
-                    <a href="./admin.php">Retour page Admin.</a>
-                </div>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-
-</section>
-
-<?php
-require_once('./templates/footer.php');
-?>
+require_once('./templates/updateDishe.php');

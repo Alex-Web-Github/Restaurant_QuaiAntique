@@ -27,5 +27,5 @@ npm start
 Créer les Tables avec les scripts SQL ci-joints
 2- Ouvrir une liaison FTP avec le serveur distant
 3- Importer fichiers PHP et les répertoires /lib, /css, /js, /templates, /upload, /assets
-4- Ouvrir le fichier ./lib/pdo.php et actualiser les paramètres de la liaison à la BDD
+4- Ouvrir le fichier ./src/pdo.php et actualiser les paramètres de la liaison à la BDD
 5- Pour créer un compte Admin, créer un compte Utilisateur, puis changer le 'role' de 'client' à 'admin' avec une commande SQL (Alter Table `users`) ou avec PHPMyAdmin.

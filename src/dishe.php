@@ -4,26 +4,27 @@
 //
 function deleteDishe(PDO $pdo, int $id)
 {
+    // On vérifie que le plat existe bien avant de l'effacer
     $sql = "SELECT * FROM `dishes` WHERE id= :id";
     $query = $pdo->prepare($sql);
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     $query->execute();
     $dishe = $query->fetch();
 
-    // On vérifie si le plat existe dans la BDD
     if (!$dishe) {
-        $errors[] = 'Cet Id n\'existe pas !';
-        header('location: ./index.php');
-    }
-    // Il existe bien, on peut alors l'effacer
-    $sql = "DELETE FROM `dishes` WHERE id= :id";
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $query->fetch();
+        // Cet Id n'existe pas
+        header('location: ./404.php');
+    } else {
 
-    $messages[] = 'Ce plat a été supprimé.';
-    header('location: ./admin.php');
+        // Il existe bien, on peut alors l'effacer
+        $sql = "DELETE FROM `dishes` WHERE id= :id";
+        $query = $pdo->prepare($sql);
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $query->fetch();
+        // Ce plat a été supprimé
+        header('location: ./admin.php');
+    }
 }
 
 //
