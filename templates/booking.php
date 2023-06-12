@@ -47,7 +47,9 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="name">Votre Nom</label>
-                                <input class="form-control" type="text" name="name" id="name">
+                                <input class="form-control" type="text" name="name" id="name" value="<?php if (isset($_POST['name'])) {
+                                                                                                            echo $_POST['name'];
+                                                                                                        } ?>">
                             </div>
 
                             <div class="col-md-6 mb-3">
