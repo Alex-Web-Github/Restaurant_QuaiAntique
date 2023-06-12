@@ -8,22 +8,22 @@
         <div class="col-12 col-md-8 col-lg-6 text-center">
 
           <!-- pré-titre -->
-          <h4 class="text-white">
+          <h4 class="text-white" data-aos="fade-down" data-aos-delay="1600">
             <span class="text-secondary fw-light">Spécialités Savoyardes</span> depuis 1950
           </h4>
 
           <!--Titre -->
-          <h1 class="display-1 text-white mb-4">
+          <h1 class="display-1 text-white mb-4" data-aos="zoom-in" >
             Quai Antique
           </h1>
 
           <!-- Sous-titre -->
-          <p class="fs-5 text-center fw-lighter text-white mb-7">
+          <p class="fs-5 text-center fw-lighter text-white mb-7" data-aos="fade-up" data-aos-delay="2900">
             Vivez une expérience gastronomique inoubliable.
           </p>
 
           <!-- Buttons -->
-          <div class="mt-5 d-grid gap-4 d-sm-block">
+          <div class="mt-5 d-grid gap-4 d-sm-block" data-aos="custom-animation" data-aos-delay="4600">
             <a class="btn btn-primary mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
             <a class="btn btn-outline-light  mx-3" href="./card.php" type="button">Voir la carte</a>
           </div>
@@ -45,7 +45,7 @@
 
 <section class="mb-3">
   <div class="container">
-    <h2 class="text-center">Nos spécialités</h2>
+    <h2 class="text-center" data-aos="custom-animation">Nos Spécialités</h2>
 
     <!-- Début du Carousel -->
     <div class="row mt-5 justify-content-center align-items-center">
@@ -96,7 +96,7 @@
 <section id="about" class="mb-3">
   <div class="container">
     <!-- Titre -->
-    <h2 class="text-center">Le Chef Arnaud MICHANT</h2>
+    <h2 class="text-center" data-aos="custom-animation">Le Chef Arnaud MICHANT</h2>
 
     <!-- Contenu -->
     <div class="row mt-5 justify-content-center align-items-center">
@@ -117,7 +117,7 @@
 <section id="menus" class="mb-3">
   <div class="container">
     <!-- Titre -->
-    <h2 class="text-center">Les Menus</h2>
+    <h2 class="text-center" data-aos="custom-animation">Les Menus</h2>
 
     <!-- Contenu -->
     <div class="row mx-0 mt-5 row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
