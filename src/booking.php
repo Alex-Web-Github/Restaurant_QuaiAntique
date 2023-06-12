@@ -1,19 +1,43 @@
 <?php
 //
+// Pour retourner le nb de couverts dispo pour une date donnée
+//
+function getCapacity(PDO $pdo, string $date, int $max = 20)
+{
+    $sql = "SELECT SUM(couverts) FROM `bookings` WHERE date = :q";
+    $query = $pdo->prepare($sql);
+    $query->bindParam(':q', $date, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetch();
+    if (!$results['SUM(couverts)']) {
+        // Aucune réservation existante, on affiche la capacité maxi de couverts
+        return $max;
+    } else {
+        //Je fixe la capacité maxi à 20 couverts et on affiche le nombre de couverts restants -->
+        return ($max - $results['SUM(couverts)']);
+    }
+}
+//
 // Pour AJOUTER une réservation à la BDD
 //
 function addBooking(PDO $pdo, string $date, int $seats, string $name, string $hour, string $allergies)
 {
-    $sql = "INSERT INTO `bookings`(`date`, `couverts`, `nom`, `hour`, `allergies`) VALUES (:date, :seats, :name, :hour, :allergies)";
+    // Vérification du nb de couverts dispo avant d'ajouter la réservation à la BDD
+    $seatCapacity = getCapacity($pdo, $date);
+    if ($seats > $seatCapacity) {
+        return 'Capacity error';
+    } else {
+        $sql = "INSERT INTO `bookings`(`date`, `couverts`, `nom`, `hour`, `allergies`) VALUES (:date, :seats, :name, :hour, :allergies)";
 
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':date', $date, PDO::PARAM_STR);
-    $query->bindParam(':seats', $seats, PDO::PARAM_INT);
-    $query->bindParam(':name', $name, PDO::PARAM_STR);
-    $query->bindParam(':hour', $hour, PDO::PARAM_STR);
-    $query->bindParam(':allergies', $allergies, PDO::PARAM_STR);
-
-    $query->execute();
+        $query = $pdo->prepare($sql);
+        $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->bindParam(':seats', $seats, PDO::PARAM_INT);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':hour', $hour, PDO::PARAM_STR);
+        $query->bindParam(':allergies', $allergies, PDO::PARAM_STR);
+        $query->execute();
+        return 'ok';
+    }
 }
 //
 // Requête pour afficher les réservations pour la date considérée

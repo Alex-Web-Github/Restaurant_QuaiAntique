@@ -60,11 +60,11 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
 
     // la fonction "password_verify" ci-dessous permet de vérifier le mot de passe rentré avec celui "hashé" en BDD
     if (!$user) {
-        $errors[] = 'L\'utilisateur et/ou le mot de passe sont incorrects';
+        return 'L\'utilisateur et/ou le mot de passe sont incorrects';
     } else {
         // Utilisateur existe, on vérifie ensuite le mot de passe
         if (!password_verify($password, $user['password'])) {
-            $errors[] = 'L\'utilisateur et/ou le mot de passe sont incorrects';
+            return 'L\'utilisateur et/ou le mot de passe sont incorrects';
         } else {
             // Les identifiants sont corrects, on peut stocker ses infos dans un cookie de Session (surtout pas le MdP !!!)
             $_SESSION['user'] = [

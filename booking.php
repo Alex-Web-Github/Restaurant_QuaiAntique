@@ -1,10 +1,12 @@
 <?php
 session_start();
+include_once('./libs/pdo.php');
 require_once('./src/booking.php');
 
-// Initialisation des messages d'erreur et de succès
+// Initialisation des variables
 $errors = [];
 $messages = [];
+$capacity = '';
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -24,35 +26,26 @@ if (!empty($_POST)) {
         $hour = strip_tags($_POST['hour']);
         $allergies = strip_tags($_POST['allergies']);
 
-        // traitement des données du formulaire
-        include_once('./src/pdo.php');
-        addBooking($pdo, $date, $seats, $name, $hour, $allergies);
+        // traitement des données du formulaire 
+        $pdo = dbConnect();
+        $result = addBooking($pdo, $date, $seats, $name, $hour, $allergies);
+        // Ci-dessous pour afficher les places disponibles juste après une réservation
+        $capacity = getCapacity($pdo, $date);
 
-        // Message de confirmation
-        $messages[] = 'Votre réservation est enregistrée. Merci et à bientôt chez nous !';
-        require_once('./src/close-pdo.php');
+        if ($result == 'ok') {
+            $messages[] = 'Merci pour votre réservation, à bientôt !';
+        } else {
+            $errors[] = 'Pas assez de couverts disponibles à cette date';
+        }
     } else {
-
+        // 
+        if (isset($_POST['date']) && !empty($_POST['date'])) {
+            $pdo = dbConnect();
+            $capacity = getCapacity($pdo, $_POST['date']);
+        }
         $errors[] = 'Le formulaire est incomplet';
     }
 }
-require('./templates/booking.php');
-?>
+$pdo = dbClose();
 
-<script>
-    function showCapacity(str) {
-        if (str == "") {
-            document.getElementById("seatCapacity").innerHTML = "";
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("seatCapacity").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "getcapacity.php?q=" + str, true);
-            xmlhttp.send();
-        }
-    }
-</script>
+require('./templates/booking.php');

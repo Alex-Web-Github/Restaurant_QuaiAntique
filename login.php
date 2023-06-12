@@ -1,13 +1,14 @@
 <?php
 session_start();
+include_once('./libs/pdo.php');
+require_once('./src/user.php');
+
 $errors = [];
 $messages = [];
 // Pour rendre la page 'login.php' inaccessible si l'utilisateur est déjà connecté
 if (isset($_SESSION['user'])) {
     header('location: ./profil.php');
 }
-
-require_once('./src/user.php');
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -20,12 +21,15 @@ if (!empty($_POST)) {
         } else {
             // Email valide, on lance ensuite la vérification du Password
             // Connexion à la BDD 
-            require_once('./src/pdo.php');
+            $pdo = dbConnect();
             // Vérification du Password
-            $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+            $check = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+            $errors[] = $check;
         }
     } else {
         $errors[] = 'Formulaire incomplet';
     }
 }
+$pdo = dbClose();
+
 require('./templates/login.php');

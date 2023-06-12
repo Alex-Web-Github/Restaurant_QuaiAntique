@@ -1,8 +1,16 @@
 <?php
 session_start();
+include_once('./libs/utils.php');
+include_once('./libs/pdo.php');
 require_once('./src/dishe.php');
+
 $errors = [];
 $messages = [];
+
+// Rendre la page 'admin.php' inaccessible si l'utilisateur n'est pas connecté OU si connecté en tant que 'client'
+if (is_admin() == false) {
+    header('location: ./index.php');
+}
 
 // On fait d'abord les vérifications avant d'envoyer les modifications
 if ($_POST) {
@@ -22,11 +30,11 @@ if ($_POST) {
         $price = strip_tags($_POST['price']);
 
         // traitement des données du formulaire
-        require_once('./src/pdo.php');
+        $pdo = dbConnect();
         updateDishe($pdo, $id, $category, $title, $description, $price);
         // Message de confirmation
         $messages[] = 'Votre plat à été modifié.';
-        require_once('./src/close-pdo.php');
+        //require_once('./src/close-pdo.php');
     } else {
         $errors[] = 'Le formulaire est incomplet';
     }
@@ -37,9 +45,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     // "Nettoyage" l'Id envoyé
     $id = strip_tags($_GET['id']);
-    require_once('./src/pdo.php');
+    $pdo = dbConnect();
     $dishe = getDisheById($pdo, $id);
-    require_once('./src/close-pdo.php');
 
     // On vérifie si le plat existe dans la BDD
     if (!$dishe) {
@@ -50,5 +57,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     // Cet URL est invalide
     header('location: ./404.php');
 }
+$pdo = dbClose();
 
-require_once('./templates/updateDishe.php');
+require('./templates/updateDishe.php');

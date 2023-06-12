@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('./libs/pdo.php');
 require_once('./src/user.php');
 // Initialisation des 'Array' des messages d'erreur et de succès
 $errors = [];
@@ -20,7 +21,7 @@ if (!empty($_POST)) {
             $errors[] = 'Email invalide';
         } else {
             // Alors on peut commencer l'inscription de cet utilisateur dans la BDD
-            require_once('./src/pdo.php');
+            $pdo = dbConnect();
             $res = addUser($pdo, $_POST['email'], $_POST['password']);
 
             // Vérification si l'inscription s'est bien déroulée
@@ -36,5 +37,6 @@ if (!empty($_POST)) {
         $errors[] = 'Formulaire incomplet';
     }
 }
+$pdo = dbClose();
 
 require('./templates/inscription.php');

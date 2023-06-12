@@ -36,11 +36,15 @@
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label class="for-label" for="email">Votre E-mail</label>
-                            <input class="form-control" type="email" name="email" id="email">
+                            <input class="form-control" type="email" name="email" id="email" value="<?php if ($_POST['email']) {
+                                                                                                        echo $_POST['email'];
+                                                                                                    } ?>">
                         </div>
                         <div class="mb-3">
                             <label class="for-label" for="password">Votre Mot de Passe</label>
-                            <input class="form-control" type="password" name="password" id="password">
+                            <input class="form-control" type="password" name="password" id="password" value="<?php if ($_POST['password']) {
+                                                                                                                    echo $_POST['password'];
+                                                                                                                } ?>">
                         </div>
                         <input type="submit" class="btn btn-primary my-3" value="Me connecter">
                         <div class="col py-3">
