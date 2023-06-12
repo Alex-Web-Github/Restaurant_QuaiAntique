@@ -72,7 +72,7 @@ $dark: #0f0a05; // pour les titres //
 @import "../node_modules/bootstrap/scss/modal"; // Requires transitions
 @import "../node_modules/bootstrap/scss/tooltip";
 // @import "bootstrap/scss/popover";
-// @import "bootstrap/scss/carousel";
+@import "bootstrap/scss/carousel";
 // @import "bootstrap/scss/spinners";
 @import "../node_modules/bootstrap/scss/offcanvas"; // Requires transitions
 // @import "bootstrap/scss/placeholders";
