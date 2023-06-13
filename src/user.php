@@ -66,7 +66,7 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password)
         if (!password_verify($password, $user['password'])) {
             return 'L\'utilisateur et/ou le mot de passe sont incorrects';
         } else {
-            // Les identifiants sont corrects, on peut stocker ses infos dans un cookie de Session (surtout pas le MdP !!!)
+            // Les identifiants sont corrects, on peut stocker ses infos dans la Supergobale $_SESSION (surtout pas le MdP !!!)
             $_SESSION['user'] = [
                 "id" => $user['id'],
                 "email" => $user['email'],

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once('./libs/utils.php');
-include_once('./libs/pdo.php');
+require_once('./libs/utils.php');
+require_once('./libs/pdo.php');
 require_once('./src/dishe.php');
 $errors = [];
 $messages = [];
