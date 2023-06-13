@@ -28,7 +28,7 @@
     <h2 class="text-center">Découvrez nos plats</h2>
 
     <!-- Les Filtres -->
-    <div class="row mt-5 navbar justify-content-center mt5">
+    <div class="row mt-5 justify-content-center mt5">
 
         <ul id="filters" class="nav nav-pills justify-content-center mb-6">
             <li class="nav-item"><a id="all" class="nav-link active">Tout</a></li>

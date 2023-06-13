@@ -13,7 +13,7 @@
           </h4>
 
           <!--Titre -->
-          <h1 class="display-1 text-white mb-4" data-aos="zoom-in" >
+          <h1 class="display-1 text-white mb-4" data-aos="zoom-in">
             Quai Antique
           </h1>
 
@@ -100,11 +100,10 @@
 
     <!-- Contenu -->
     <div class="row mt-5 justify-content-center align-items-center">
-      <div class="col-md-8 px-5 py-2">
-        <p class="fs-5">Le Chef Arnaud Michant aime passionnément les produits - et les producteurs - de la Savoie. </br>Le Quai Antique est installé à Chambéry et propose au déjeuner comme au dîner une expérience gastronomique, à travers une cuisine sans artifice.
+      <div class="col-md-8  px-3 px-md-5 py-2">
+        <p class="lead">Le Chef Arnaud Michant aime passionnément les produits - et les producteurs - de la Savoie. </br>Le Quai Antique est installé à Chambéry et propose au déjeuner comme au dîner une expérience gastronomique, à travers une cuisine sans artifice.
           </br>Plus encore que ses deux autres restaurants, Arnaud Michant le voit comme une promesse d’un voyage dans son univers culinaire.
         </p>
-
       </div>
       <div class="col-md-4"><img class="img-fluid rounded" src="./assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
 

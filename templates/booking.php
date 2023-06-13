@@ -150,6 +150,9 @@
                                     <option value="13h30-13h45" <?php if (isset($_POST['hour']) && ($_POST['hour'] == '13h30-13h45')) {
                                                                     echo 'selected';
                                                                 } ?>>13h30-13h45</option>
+                                    <option value="13h45-14h00" <?php if (isset($_POST['hour']) && ($_POST['hour'] == '13h45-14h00')) {
+                                                                    echo 'selected';
+                                                                } ?>>13h45-14h00</option>
                                 </select>
                             </div>
                             <div class="col-12 mb-3">
