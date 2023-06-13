@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('./libs/config.php');
 require_once('./libs/utils.php');
 require_once('./libs/pdo.php');
 require_once('./src/dishe.php');

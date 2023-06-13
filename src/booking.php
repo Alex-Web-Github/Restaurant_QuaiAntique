@@ -2,7 +2,7 @@
 //
 // Pour retourner le nb de couverts dispo pour une date donnée
 //
-function getCapacity(PDO $pdo, string $date, int $max = 20)
+function getCapacity(PDO $pdo, string $date)
 {
     $sql = "SELECT SUM(couverts) FROM `bookings` WHERE date = :q";
     $query = $pdo->prepare($sql);
@@ -11,10 +11,10 @@ function getCapacity(PDO $pdo, string $date, int $max = 20)
     $results = $query->fetch();
     if (!$results['SUM(couverts)']) {
         // Aucune réservation existante, on affiche la capacité maxi de couverts
-        return $max;
+        return SEAT_CAPACITY;
     } else {
         //Je fixe la capacité maxi à 20 couverts et on affiche le nombre de couverts restants -->
-        return ($max - $results['SUM(couverts)']);
+        return (SEAT_CAPACITY - $results['SUM(couverts)']);
     }
 }
 //

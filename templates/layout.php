@@ -98,7 +98,7 @@
                         <h5 class="text-white-75 fw-light pb-2">
                             Nous contacter
                         </h5>
-                        <ul class="list-unstyled mb-6">
+                        <ul class="list-unstyled mb-3">
                             <li class="d-flex mb-2">
                                 <div class="me-2 "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#906427" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
@@ -122,7 +122,16 @@
                         <h5 class="text-white-75 pb-2 fw-light">
                             Heures d'ouvertures
                         </h5>
-                        <div class="mb-3">
+
+                        <?php foreach (OPENING_HOURS as $key => $hours) { ?>
+                            <div class="mb-3">
+                                <div class="text-white-75 fw-lighter"><?= $key ?></div>
+                                <div class="text-white-75 fw-lighter font-serif"><?= $hours ?></div>
+                            </div>
+                        <?php
+                        } ?>
+
+<!--                        <div class="mb-3">
                             <div class="text-white-75 fw-lighter">Lundi - Jeudi</div>
                             <div class="text-white-75 fw-lighter font-serif">10:00 - 23:00</div>
                         </div>
@@ -130,7 +139,7 @@
                             <div class="text-white-75 fw-lighter">Vendredi - Dimanche</div>
                             <div class="text-white-75 fw-lighter font-serif">12:00 - 15:00</div>
                         </div>
-
+                    -->
                     </div>
                 </div>
             </div>
