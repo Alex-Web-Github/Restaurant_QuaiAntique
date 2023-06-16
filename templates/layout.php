@@ -131,15 +131,7 @@
                         <?php
                         } ?>
 
-<!--                        <div class="mb-3">
-                            <div class="text-white-75 fw-lighter">Lundi - Jeudi</div>
-                            <div class="text-white-75 fw-lighter font-serif">10:00 - 23:00</div>
-                        </div>
-                        <div class="mb-6">
-                            <div class="text-white-75 fw-lighter">Vendredi - Dimanche</div>
-                            <div class="text-white-75 fw-lighter font-serif">12:00 - 15:00</div>
-                        </div>
-                    -->
+
                     </div>
                 </div>
             </div>
