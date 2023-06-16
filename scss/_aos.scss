@@ -1,0 +1,23 @@
+//
+//  Style pour librairie AnimateOnScroll
+//
+
+@import "../node_modules/aos/dist/aos.css";
+
+[data-aos="custom-animation"] {
+    // Par défaut, seulement Opacity de 0 à 1
+	opacity: 0;
+	transition-property: transform, opacity;
+
+	&.aos-animate {
+		opacity: 1;
+	}
+// On ajout du TranslateX sur device >768px
+	@media screen and (min-width: 768px) {
+		transform: translateX(100px);
+
+		&.aos-animate {
+			transform: translateX(0);
+		}
+	}
+}
