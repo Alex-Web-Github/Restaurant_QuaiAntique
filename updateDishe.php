@@ -2,7 +2,7 @@
 session_start();
 require_once('./libs/utils.php');
 require_once('./libs/pdo.php');
-require_once('./src/dishe.php');
+require_once('./models/dishe.php');
 
 $errors = [];
 $messages = [];
@@ -34,7 +34,7 @@ if ($_POST) {
         updateDishe($pdo, $id, $category, $title, $description, $price);
         // Message de confirmation
         $messages[] = 'Votre plat à été modifié.';
-        //require_once('./src/close-pdo.php');
+        //require_once('./models/close-pdo.php');
     } else {
         $errors[] = 'Le formulaire est incomplet';
     }

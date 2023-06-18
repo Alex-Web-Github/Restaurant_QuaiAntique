@@ -2,7 +2,7 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/pdo.php');
-require_once('./src/booking.php');
+require_once('./models/booking.php');
 
 // Initialisation des variables
 $errors = [];

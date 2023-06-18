@@ -3,9 +3,9 @@ session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
 require_once('./libs/pdo.php');
-require_once('./src/dishe.php');
-require_once('./src/booking.php');
-require_once('./src/user.php');
+require_once('./models/dishe.php');
+require_once('./models/booking.php');
+require_once('./models/user.php');
 // Initialisation des messages d'erreur et de succès si besoin
 $errors = [];
 $messages = [];
