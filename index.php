@@ -1,6 +1,8 @@
-<?php session_start(); 
+<?php session_start();
 require_once('./libs/config.php');
 ?>
+
+<!-- Définition du Header spécique à la page d'Accueil -->
 
 <?php ob_start(); ?>
 <header style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(0,0,0,1) 80%, rgba(57,44,30,1) 100%); position: relative; z-index: 0;">
@@ -41,8 +43,9 @@ require_once('./libs/config.php');
 </header>
 <?php $header = ob_get_clean(); ?>
 
-<?php ob_start(); ?>
+<!-- DÉBUT Définition du contenu de la page d'Accueil -->
 
+<?php ob_start(); ?>
 <hr class="hr-custom">
 
 <section class="mb-3">
@@ -180,5 +183,6 @@ require_once('./libs/config.php');
 </section>
 
 <?php $content = ob_get_clean(); ?>
+<!-- FIN Définition du contenu de la page d'Accueil -->
 
 <?php require('./templates/layout.php'); ?>

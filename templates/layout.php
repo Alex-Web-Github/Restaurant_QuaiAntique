@@ -10,6 +10,7 @@
 </head>
 
 <body style="padding : 0;">
+    <!----- NAVIGATION ----->
     <nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark" style="background: #191715e3;">
         <div class="container">
 
@@ -65,7 +66,14 @@
         </div>
     </nav>
 
-    <?= $header ?>
+    <!----- HEADER ----->
+    <?php if (isset($header)) {
+        // Affichage du Header spécifique à la page d'Accueil
+        echo $header;
+    } else {
+        // Affichage du Header générique
+        require_once('header-page.php');
+    } ?>
 
     <main>
         <?php
@@ -78,6 +86,7 @@
         <?= $content ?>
 
     </main>
+
     <!----- FOOTER ----->
     <footer class="py-7 py-md-9 ">
         <div class="container-fluid  bg-success">
