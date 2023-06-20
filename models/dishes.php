@@ -1,17 +1,10 @@
 <?php
+require_once('models/model.php');
+
 // Pour afficher TOUS les plats
 class Dishes
 {
-    private $pdo = null;
-
-    public function __construct()
-    {
-        try {
-            $this->pdo = new PDO('mysql:dbname=quai_antique;host=localhost;charset=utf8mb4', 'root', '');
-        } catch (PDOException $e) {
-            exit('Erreur : ' . $e->getMessage());
-        }
-    }
+    use Model;
 
     function getDishes()
     {
