@@ -1,15 +1,14 @@
 <?php
 session_start();
+// config.php -> afficher horaires dans le Footer
 require_once('./libs/config.php');
-require_once('./libs/pdo.php');
-require_once('./models/dishe.php');
+require_once('./models/dishes.php');
 // Initialisation des messages d'erreur et de succès
 $errors = [];
 $messages = [];
 
-$pdo = dbConnect();
-$dishes = getDishes($pdo);
-$pdo = dbClose();
+$dishes = new Dishes();
+$dishes = $dishes->getDishes();
 ?>
 
-<?php require('./templates/card.php'); ?>
+<?php require_once('./templates/cards-list.php'); ?>

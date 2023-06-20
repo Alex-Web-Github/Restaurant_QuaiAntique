@@ -1,48 +1,50 @@
 <?php $title = 'Gestion de la Carte'; ?>
 
-<?php ob_start(); ?>
-<section class="d-flex vh-100">
-    <div class="container ">
-        <div class="row mt-5 justify-content-center">
-            <div class="col-12 col-md-10">
-                <!-- Titre -->
-                <h2 class="text-center">Mettre à jour un plat</h2>
+<?php if (is_null($dishe)) {
+    header('location: ./404.php');
+} else {
+    ob_start(); ?>
+    <section class="d-flex vh-100">
+        <div class="container ">
+            <div class="row mt-5 justify-content-center">
+                <div class="col-12 col-md-10">
+                    <!-- Titre -->
+                    <h2 class="text-center">Mettre à jour un plat</h2>
 
-                <!-- Formulaire d'ajout de plat  -->
-                <!-- On préremplit les valeurs du formulaire avec celles du plat sélectionné -->
-                <form action="" method="POST">
-                    <div class="mb-3 mt-5 ">
-                        <label class="for-label" for="category">Catégorie du plat</label>
-                        <input class="form-control" type="text" name="category" id="category" value="<?= $dishe['category'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="title">Intitulé du plat</label>
-                        <input class="form-control" type="text" name="title" id="title" value="<?= $dishe['title'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="description">Description</label>
-                        <input class="form-control" type="text" name="description" id="description" value="<?= $dishe['description'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="for-label" for="price">Tarif</label>
-                        <input class="form-control" type="text" name="price" id="price" value="<?= $dishe['price'] ?>">
-                    </div>
-                    <!-- Important !!! -->
-                    <input type="hidden" name="id" id="id" value="<?= $dishe['id'] ?>">
-                    <input type="submit" class="btn btn-primary my-3" value="Enregistrer les modifications">
-                    <div class="col py-3">
-                        <a href="./admin.php">Retour page Admin.</a>
-                    </div>
-                </form>
+                    <!-- Formulaire d'ajout de plat  -->
+                    <!-- On préremplit les valeurs du formulaire avec celles du plat sélectionné -->
+                    <form action="" method="POST">
+                        <div class="mb-3 mt-5 ">
+                            <label class="for-label" for="category">Catégorie du plat</label>
+                            <input class="form-control" type="text" name="category" id="category" value="<?= $dishe->category ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="for-label" for="title">Intitulé du plat</label>
+                            <input class="form-control" type="text" name="title" id="title" value="<?= $dishe->title ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="for-label" for="description">Description</label>
+                            <input class="form-control" type="text" name="description" id="description" value="<?= $dishe->description ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="for-label" for="price">Tarif</label>
+                            <input class="form-control" type="text" name="price" id="price" value="<?= $dishe->price ?>">
+                        </div>
+                        <!-- Important !!! -->
+                        <input type="hidden" name="id" id="id" value="<?= $dishe->id ?>">
+                        <input type="submit" class="btn btn-primary my-3" value="Enregistrer les modifications">
+                        <div class="col py-3">
+                            <a href="./admin.php">Retour page Admin.</a>
+                        </div>
+                    </form>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
 
-</section>
-<?php $content = ob_get_clean(); ?>
+    </section>
+<?php $content = ob_get_clean();
+} ?>
 
-<?php require('./templates/layout.php'); ?>
-
-?>
+<?php require_once('./templates/layout.php'); ?>

@@ -1,85 +1,102 @@
 <?php
-//
-// Pour SUPPRIMER un plat par Id depuis la BDD
-//
-function deleteDishe(PDO $pdo, int $id)
+// Pour afficher UN plat selon son Id
+class Dishe
 {
-    // On vérifie que le plat existe bien avant de l'effacer
-    $sql = "SELECT * FROM `dishes` WHERE id= :id";
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $dishe = $query->fetch();
+    private $pdo = null;
 
-    if (!$dishe) {
-        // Cet Id n'existe pas
-        header('location: ./404.php');
-    } else {
-
-        // Il existe bien, on peut alors l'effacer
-        $sql = "DELETE FROM `dishes` WHERE id= :id";
-        $query = $pdo->prepare($sql);
-        $query->bindParam(':id', $id, PDO::PARAM_INT);
-        $query->execute();
-        $query->fetch();
-        // Ce plat a été supprimé
-        header('location: ./admin.php');
+    public function __construct()
+    {
+        try {
+            $this->pdo = new PDO('mysql:dbname=quai_antique;host=localhost;charset=utf8mb4', 'root', '');
+        } catch (PDOException $e) {
+            exit('Erreur : ' . $e->getMessage());
+        }
     }
-}
 
-//
-// Pour AJOUTER un nouveau plat
-//
-function addDishe(PDO $pdo, string $category, string $title, string $description, string $price)
-{
-    $sql = "INSERT INTO `dishes`(`category`, `title`, `description`, `price`) VALUES (:category, :title, :description, :price)";
+    public function getDisheById(int $id)
+    {
+        if (!is_null($this->pdo)) {
+            $stmt = $this->pdo->prepare('SELECT * FROM dishes WHERE id= :id');
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        }
 
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':category', $category, PDO::PARAM_STR);
-    $query->bindParam(':title', $title, PDO::PARAM_STR);
-    $query->bindParam(':description', $description, PDO::PARAM_STR);
-    $query->bindParam(':price', $price, PDO::PARAM_INT);
+        $dishe = null;
+        if ($stmt->execute()) {
+            $dishe = $stmt->fetchObject();
+            if (!is_object($dishe)) {
+                $dishe = null;
+            }
+        }
+        return $dishe;
+    }
 
-    $query->execute();
-}
-//
-// Pour UPDATE un plat selon son Id
-//
-function updateDishe(PDO $pdo, int $id, string $category, string $title, string $description, string $price)
-{
-    $sql = "UPDATE `dishes` SET `category`= :category,`title`= :title,`description`= :description,`price`= :price WHERE `id`= :id;";
+    public function updateDishe(int $id, string $category, string $title, string $description, string $price)
+    {
+        if (!is_null($this->pdo)) {
+            $stmt = $this->pdo->prepare('UPDATE dishes SET category= :category, title= :title, description= :description, price= :price WHERE id= :id;');
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+            $stmt->bindParam(':price', $price, PDO::PARAM_INT);
+        }
+        $dishe = [];
+        if ($stmt->execute()) {
+            $dishe = $stmt->fetchObject();
+            if (!is_object($dishe)) {
+                $dishe = null;
+            }
+        }
+        return $dishe;
+    }
 
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':id', $id, PDO::PARAM_INT);
-    $query->bindParam(':category', $category, PDO::PARAM_STR);
-    $query->bindParam(':title', $title, PDO::PARAM_STR);
-    $query->bindParam(':description', $description, PDO::PARAM_STR);
-    $query->bindParam(':price', $price, PDO::PARAM_STR);
+    public function addDishe(string $category, string $title, string $description, string $price)
+    {
+        if (!is_null($this->pdo)) {
+            $stmt = $this->pdo->prepare('INSERT INTO dishes(`category`, `title`, `description`, `price`) VALUES (:category, :title, :description, :price)');
 
-    $query->execute();
-}
+            $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+            $stmt->bindParam(':price', $price, PDO::PARAM_INT);
+        }
+        $dishe = [];
+        if ($stmt->execute()) {
+            $dishe = $stmt->fetchObject();
+            if (!is_object($dishe)) {
+                $dishe = null;
+            }
+        }
+        return $dishe;
+    }
 
-//
-// Pour LIRE TOUS les plats depuis la BDD
-//
-function getDishes(PDO $pdo)
-{
-    $sql = "SELECT * FROM `dishes`";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    // stockage dans un tableau associatif
-    return $query->fetchAll(pdo::FETCH_ASSOC);
-}
-
-//
-// Pour LIRE un plat par ID depuis la BDD
-//
-function getDisheById(PDO $pdo, int $id)
-{
-    $sql = "SELECT * FROM `dishes` WHERE id= :id";
-    $query = $pdo->prepare($sql);
-    $query->bindParam(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    // Stockage dans un tableau associatif
-    return $query->fetch();
+    public function deleteDishe(int $id)
+    {
+        // D'abord vérifier que l'Id existe
+        if (!is_null($this->pdo)) {
+            $stmt = $this->pdo->prepare('SELECT * FROM dishes WHERE id= :id');
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        }
+        $dishe = [];
+        if ($stmt->execute()) {
+            $dishe = $stmt->fetchObject();
+            if (!is_object($dishe)) {
+                $dishe = null;
+                header('location: ./404.php');
+            } else {
+                // Il existe bien, on peut alors EFFACER le plat correspondant
+                $stmt = $this->pdo->prepare('DELETE FROM dishes WHERE id= :id');
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                $dishe = [];
+                if ($stmt->execute()) {
+                    $dishe = $stmt->fetchObject();
+                    if (!is_object($dishe)) {
+                        $dishe = null;
+                    }
+                }
+                return $dishe;
+                $messages[] = 'Ce plat a été supprimé';
+            }
+        }
+    }
 }

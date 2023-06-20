@@ -29,12 +29,19 @@
                     </form>
                 </div>
 
+                <div class="container mt-3 d-flex  justify-content-between align-items-center">
+                    <div><a href="./login.php" class="btn btn-outline-primary my-3">Connexion</a>
+                    </div>
+                    <div><a href="./index.php">Revenir sur le site</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>
 
 ?>

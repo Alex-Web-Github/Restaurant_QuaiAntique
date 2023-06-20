@@ -1,5 +1,7 @@
 <?php
-// Template du Header avec Titre H1 de la page courante
+//
+// Template du Header générique avec Titre H1 de la page courante
+//
 ?>
 
 <header style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(0,0,0,1) 80%, rgba(57,44,30,1) 100%); position: relative; z-index: 0; max-height: 60vh;">

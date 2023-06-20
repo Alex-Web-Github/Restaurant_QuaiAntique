@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <!-- Barre d'Administration avec Icones -->
-<section>
+<article>
     <div class="px-3 py-2 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -57,9 +57,9 @@
             </div>
         </div>
     </div>
-</section>
+</article>
 <!-- CRUD des plats proposés -->
-<section id="dishes" class="d-flex flex-column">
+<article id="dishes" class="d-flex flex-column">
     <div class="container">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-lg-10 mt-5 ">
@@ -80,16 +80,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php foreach ($dishes as $key => $dishe) { ?>
+                            <?php foreach ($dishes as $dishe) { ?>
                                 <tr>
-                                    <th scope="row"><?= $dishe['id']; ?></th>
-                                    <td><?= $dishe['category']; ?></td>
-                                    <td><?= $dishe['title']; ?></td>
-                                    <td><?= $dishe['description']; ?></td>
-                                    <td><?= $dishe['price']; ?></td>
+                                    <th scope="row"><?= $dishe->id ?></th>
+                                    <td><?= $dishe->category ?></td>
+                                    <td><?= $dishe->title ?></td>
+                                    <td><?= $dishe->description ?></td>
+                                    <td><?= $dishe->price ?></td>
                                     <td class="d-grid gap-2 d-md-block">
 
-                                        <a type="button" class="btn btn-outline-primary" href="./readDishe.php?id=<?= $dishe['id']; ?>">
+                                        <a type="button" class="btn btn-outline-primary" href="./readDishe.php?id=<?= $dishe->id; ?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                 <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
@@ -102,22 +102,22 @@
                     </table>
 
                 </div>
-                <div class="row justify-content-between py-3">
-                    <div class="col col-md-5">
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <div>
                         <a href="./index.php" class="btn btn-outline-primary">Retour à la page d'accueil</a>
                     </div>
-                    <div class="col text-end col-md-5">
+                    <div>
                         <a href="./addDishe.php" class="btn btn-outline-info">Ajouter un plat</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</article>
 <!-- CRUD des Réservations -->
-<section id="bookings" class="d-flex flex-column">
+<article id="bookings" class="d-flex flex-column">
     <div class="container ">
-        <div id="photos" class="row mt-5 justify-content-center">
+        <div class="row mt-5 justify-content-center">
             <div class="col-12 col-lg-10 mt-5 ">
                 <!-- Titre -->
                 <h2 class="text-center">Gestion des réservations</h2>
@@ -136,17 +136,17 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php foreach ($bookings as $key => $booking) { ?>
+                            <?php foreach ($bookings as $booking) { ?>
                                 <tr>
-                                    <th scope="row"><?= $booking['id']; ?></th>
-                                    <td><?= $booking['date']; ?></td>
-                                    <td><?= $booking['couverts']; ?></td>
-                                    <td><?= $booking['nom']; ?></td>
-                                    <td><?= $booking['hour']; ?></td>
-                                    <td><?= $booking['allergies']; ?></td>
+                                    <th scope="row"><?= $booking->id ?></th>
+                                    <td><?= $booking->date ?></td>
+                                    <td><?= $booking->couverts ?></td>
+                                    <td><?= $booking->nom ?></td>
+                                    <td><?= $booking->hour ?></td>
+                                    <td><?= $booking->allergies ?></td>
                                     <td class="d-grid gap-2 d-md-block">
 
-                                        <a type="button" class="btn btn-outline-primary disabled" href="./readDishe.php?id=<?= $dishe['id']; ?>">
+                                        <a type="button" class="btn btn-outline-primary disabled" href="./readDishe.php?id=<?= $dishe->id ?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                 <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
@@ -158,17 +158,20 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row justify-content-between py-3">
-                    <div class="col col-md-5">
-                        <a href="#" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <div>
+                        <a href="./index.php" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                    </div>
+                    <div>
+                        <a href="" class="btn btn-outline-info disabled">Ajouter une réservation</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</article>
 <!-- CRUD des Utilisateurs -->
-<section id="users" class="d-flex flex-column">
+<article id="users" class="d-flex flex-column">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-lg-10 mt-5 ">
@@ -186,11 +189,11 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php foreach ($users as $key => $user) { ?>
+                            <?php foreach ($users as $user) { ?>
                                 <tr>
-                                    <th scope="row"><?= $user['id']; ?></th>
-                                    <td><?= $user['email']; ?></td>
-                                    <td><?= $user['role']; ?></td>
+                                    <th scope="row"><?= $user->id; ?></th>
+                                    <td><?= $user->email ?></td>
+                                    <td><?= $user->role ?></td>
                                     <td class="d-grid gap-2 d-md-block">
 
                                         <a type="button" class="btn btn-outline-primary disabled" href="">
@@ -205,17 +208,20 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row justify-content-between py-3">
-                    <div class="col col-md-5">
-                        <a href="#" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <div>
+                        <a href="./index.php" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                    </div>
+                    <div>
+                        <a href="" class="btn btn-outline-info disabled">Ajouter un utilisateur</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</article>
 <!-- CRUD des photos de la galerie -->
-<section id="photos" class="d-flex flex-column">
+<article id="photos" class="d-flex flex-column">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-lg-10 mt-5 ">
@@ -251,20 +257,20 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row justify-content-between py-3">
-                    <div class="col col-md-5">
-                        <a href="#" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <div>
+                        <a href="./index.php" class="btn btn-outline-primary">Retour à la page d'accueil</a>
                     </div>
-                    <div class="col text-end col-md-5">
-                        <a href="#" class="btn btn-outline-info disabled">Ajouter une photo</a>
+                    <div>
+                        <a href="" class="btn btn-outline-info disabled">Ajouter une photo</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</article>
 <!-- CRUD des menus -->
-<section id="menus" class="d-flex flex-column">
+<article id="menus" class="d-flex flex-column">
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-lg-10 mt-5 ">
@@ -302,19 +308,18 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row justify-content-between py-3">
-                    <div class="col col-md-5">
-                        <a href="#" class="btn btn-outline-primary">Retour à la page d'accueil</a>
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <div>
+                        <a href="./index.php" class="btn btn-outline-primary">Retour à la page d'accueil</a>
                     </div>
-                    <div class="col text-end col-md-5">
-                        <a href="#" class="btn btn-outline-info disabled">Ajouter un menu</a>
+                    <div>
+                        <a href="" class="btn btn-outline-info disabled">Ajouter un menu</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
+</article>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>

@@ -68,11 +68,11 @@
 
     <!----- HEADER ----->
     <?php if (isset($header)) {
-        // Affichage du Header spécifique à la page d'Accueil
+        // Affichage d'un Header spécifique s'il existe (comme sur la page Accueil)
         echo $header;
     } else {
         // Affichage du Header générique
-        require_once('header-page.php');
+        require_once('./templates/header-page.php');
     } ?>
 
     <main>
@@ -163,6 +163,7 @@
             once: true,
         });
     </script>
+    <!-- Pour ne pas insérer le script AJAX de 'booking.php' à toutes les pages -->
     <?php if (isset($script)) {
         echo $script;
     } ?>

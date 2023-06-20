@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('./libs/utils.php');
-require_once('./libs/pdo.php');
+//require_once('./libs/pdo.php');
 require_once('./models/dishe.php');
 $errors = [];
 $messages = [];
@@ -10,6 +10,9 @@ $messages = [];
 if (is_admin() == false) {
     header('location: ./index.php');
 }
+
+$dishes = new Dishe();
+$dishe = [];
 
 if ($_POST) {
     // Vérification si les champs sont définis et NON vides
@@ -26,8 +29,7 @@ if ($_POST) {
         $price = strip_tags($_POST['price']);
 
         // traitement des données du formulaire
-        $pdo = dbConnect();
-        addDishe($pdo, $category, $title, $description, $price);
+        $dishe = $dishes->addDishe($category, $title, $description, $price);
         // Message de confirmation
         $messages[] = 'Votre plat à été ajouté.';
 
@@ -37,5 +39,5 @@ if ($_POST) {
         $errors[] = 'Le formulaire est incomplet';
     }
 }
-$pdo = dbClose();
+
 require_once('./templates/addDishe.php');

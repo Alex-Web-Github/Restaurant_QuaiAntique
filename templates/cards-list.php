@@ -18,12 +18,12 @@
 
         <!-- Les plats -->
         <div id="gallery" class="row mt-5 row-cols-1 row-cols-sm-2 row-cols-md-3  g-4">
-            <?php foreach ($dishes as $key => $dishe) {
-                include('./templates/dishe_partial.php');
-            } ?>
+            <?php foreach ($dishes as $dishe) {
+                include('./templates/dishe_partial.php'); ?>
+            <?php } ?>
         </div>
     </div>
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>

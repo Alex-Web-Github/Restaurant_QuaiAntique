@@ -1,13 +1,15 @@
 <?php
 session_start();
 require_once('./libs/config.php');
-require_once('./libs/pdo.php');
 require_once('./models/booking.php');
 
 // Initialisation des variables
 $errors = [];
 $messages = [];
-$capacity = '';
+$capacity = [];
+
+$newBooking = new Booking();
+$myBooking = [];
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -19,7 +21,6 @@ if (!empty($_POST)) {
         && isset($_POST['hour']) && !empty($_POST['hour'])
         && isset($_POST['allergies'])
     ) {
-
         // On nettoie les données envoyées
         $date = strip_tags($_POST['date']);
         $seats = strip_tags($_POST['seats']);
@@ -27,26 +28,28 @@ if (!empty($_POST)) {
         $hour = strip_tags($_POST['hour']);
         $allergies = strip_tags($_POST['allergies']);
 
-        // traitement des données du formulaire 
-        $pdo = dbConnect();
-        $result = addBooking($pdo, $date, $seats, $name, $hour, $allergies);
-        // Ci-dessous pour afficher les places disponibles juste après une réservation
-        $capacity = getCapacity($pdo, $date);
+        // Vérification de la capacité en couverts
+        $capacity = $newBooking->getCapacity($date);
 
-        if ($result == 'ok') {
-            $messages[] = 'Merci pour votre réservation, à bientôt !';
-        } else {
+        if ($seats > $capacity) {
             $errors[] = 'Pas assez de couverts disponibles à cette date';
+        } else {
+
+            // Enregistrement de la réservation en BDD 
+            $myBooking = $newBooking->addBooking($date, $seats, $name, $hour, $allergies);
+
+            // Pour afficher les places disponibles juste après une réservation
+            if (isset($_POST['date']) && !empty($_POST['date'])) {
+                $capacity = $newBooking->getCapacity($_POST['date']);
+            }
+
+            // Message de confirmation de la réservation
+            $messages[] = 'Merci pour votre réservation, à bientôt !';
         }
     } else {
-        // 
-        if (isset($_POST['date']) && !empty($_POST['date'])) {
-            $pdo = dbConnect();
-            $capacity = getCapacity($pdo, $_POST['date']);
-        }
+
         $errors[] = 'Le formulaire est incomplet';
     }
 }
-$pdo = dbClose();
 
-require('./templates/booking.php');
+require_once('./templates/booking.php');

@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('./libs/utils.php');
-require_once('./libs/pdo.php');
 require_once('./models/dishe.php');
 $errors = [];
 $messages = [];
@@ -11,23 +10,16 @@ if (is_admin() == false) {
     header('location: ./index.php');
 }
 
-// Vérification si Id existe et n'est pas vide dans l'URL
+$dishes = new Dishe();
+$dishe = null;
+// Vérification si il y a bien une variable $id passée en GET et qu'elle n'est pas vide
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     // "Nettoyage" l'Id envoyé
     $id = strip_tags($_GET['id']);
-
-    $pdo = dbConnect();
-    $dishe = getDisheById($pdo, $id);
-
-    // On vérifie si le plat existe dans la BDD
-    if (!$dishe) {
-        // Cet Id n\'existe pas
-        header('location: ./404.php');
-    }
+    $dishe = $dishes->getDisheById($id);
 } else {
-    // Cet URL invalide
+    // URL invalide
     header('location: ./404.php');
 }
-$pdo = dbClose();
 
-require('./templates/readDishe.php');
+require_once('./templates/readDishe.php');

@@ -5,13 +5,11 @@
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 text-center">
-
                 <!-- Titre -->
                 <h2 class="text-center">Formulaire de connexion</h2>
 
                 <!-- Formulaire d'inscription'  -->
                 <div class="container mt-5">
-
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label class="for-label" for="email">Votre E-mail</label>
@@ -26,17 +24,18 @@
                                                                                                                 } ?>">
                         </div>
                         <input type="submit" class="btn btn-primary my-3" value="Me connecter">
-                        <div class="col py-3">
-                            <a href="./inscription.php">Je ne suis pas encore inscrit</a>
-                        </div>
-
                     </form>
                 </div>
-
+                <div class="container mt-3 d-flex  justify-content-between align-items-center">
+                    <div><a href="./inscription.php" class="btn btn-outline-primary my-3">Créer un compte</a>
+                    </div>
+                    <div><a href="./index.php">Revenir sur le site</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>

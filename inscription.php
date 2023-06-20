@@ -1,11 +1,14 @@
 <?php
 session_start();
 require_once('./libs/config.php');
-require_once('./libs/pdo.php');
-require_once('./models/user.php');
+require_once('./models/users.php');
+
 // Initialisation des 'Array' des messages d'erreur et de succès
 $errors = [];
 $messages = [];
+
+$users = new Users;
+$res = [];
 
 // Rendre la page 'inscription.php' inaccessible si l'utilisateur est déjà connecté
 if (isset($_SESSION['user'])) {
@@ -21,15 +24,15 @@ if (!empty($_POST)) {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Email invalide';
         } else {
-            // Alors on peut commencer l'inscription de cet utilisateur dans la BDD
-            $pdo = dbConnect();
-            $res = addUser($pdo, $_POST['email'], $_POST['password']);
 
-            // Vérification si l'inscription s'est bien déroulée
+            // Alors on peut commencer l'inscription de cet utilisateur dans la BDD
+            $res = $users->addUser($_POST['email'], $_POST['password']);
+
             if ($res) {
+                // Vérification si l'inscription s'est bien déroulée
                 $messages[] = 'Merci pour votre inscription ! Vous pouvez vous connecter';
             } else {
-                // Problème durant l'ajout en BDD
+                // Problème durant l'insertion en BDD
                 $errors[] = 'Une erreur s\'est produite lors de votre inscription';
             }
         }
@@ -38,6 +41,5 @@ if (!empty($_POST)) {
         $errors[] = 'Formulaire incomplet';
     }
 }
-$pdo = dbClose();
 
-require('./templates/inscription.php');
+require_once('./templates/inscription.php');

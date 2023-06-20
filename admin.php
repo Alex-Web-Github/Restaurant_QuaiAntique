@@ -2,10 +2,9 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
-require_once('./libs/pdo.php');
-require_once('./models/dishe.php');
-require_once('./models/booking.php');
-require_once('./models/user.php');
+require_once('./models/bookings.php');
+require_once('./models/users.php');
+require_once('./models/dishes.php');
 // Initialisation des messages d'erreur et de succès si besoin
 $errors = [];
 $messages = [];
@@ -15,11 +14,11 @@ if (is_admin() == false) {
     header('location: ./index.php');
 }
 
-// Je récupère tous les plats depuis la BDD avec cette fonction
-$pdo = dbConnect();
-$dishes = getDishes($pdo);
-$bookings = getBookings($pdo);
-$users = getUsers($pdo);
-$pdo = dbClose();
+$dishes = new Dishes();
+$dishes = $dishes->getDishes();
+$bookings = new Bookings();
+$bookings = $bookings->getBookings();
+$users = new Users();
+$users = $users->getUsers();
 
-require('./templates/admin.php');
+require_once('./templates/admin.php');

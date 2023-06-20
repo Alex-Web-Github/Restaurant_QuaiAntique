@@ -185,4 +185,4 @@ require_once('./libs/config.php');
 <?php $content = ob_get_clean(); ?>
 <!-- FIN Définition du contenu de la page d'Accueil -->
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>

@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once('./libs/config.php');
-require_once('./libs/pdo.php');
-require_once('./models/user.php');
+require_once('./models/users.php');
 
 $errors = [];
 $messages = [];
@@ -10,6 +9,9 @@ $messages = [];
 if (isset($_SESSION['user'])) {
     header('location: ./profil.php');
 }
+
+$users = new Users;
+$check = '';
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -21,16 +23,13 @@ if (!empty($_POST)) {
             $errors[] = 'Format d\'Email invalide';
         } else {
             // Email valide, on lance ensuite la vérification du Password
-            // Connexion à la BDD 
-            $pdo = dbConnect();
             // Vérification du Password
-            $check = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+            $check = $users->verifyUserLoginPassword($_POST['email'], $_POST['password']);
             $errors[] = $check;
         }
     } else {
         $errors[] = 'Formulaire incomplet';
     }
 }
-$pdo = dbClose();
 
-require('./templates/login.php');
+require_once('./templates/login.php');

@@ -12,23 +12,24 @@
                 <div class="container mt-5 text-center rounded border border-1 border-secondary">
                     <div class="col my-2 my-sm-3">
                         Places disponibles :
-                        <p class="fw-bold m-0" id="seatCapacity" style="color: #906427;"><?php if ($capacity == '') {
-                                                                                                echo 'choisir une date...';
-                                                                                            } else {
-                                                                                                echo $capacity;
-                                                                                            } ?></p>
+                        <p class="fw-bold m-0" id="seatCapacity" style="color: #906427;">
+
+                            <?php if ($capacity == []) {
+                                echo 'choisir une date...';
+                            } else {
+                                echo $capacity;
+                            } ?>
+                        </p>
                     </div>
                 </div>
 
                 <!-- Formulaire de réservation  -->
                 <div class="container mt-5">
                     <form action="" method="POST">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="name">Votre Nom</label>
-                                <input class="form-control" type="text" name="name" id="name" value="<?php if (isset($_POST['name'])) {
-                                                                                                            echo $_POST['name'];
-                                                                                                        } ?>">
+                                <input class="form-control" type="text" name="name" id="name">
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -140,22 +141,21 @@
                                                                                                                                         echo $_POST['allergies'];
                                                                                                                                     } ?>">
                             </div>
-                            <div>
+                            <div class="col-md-6 mt-3 mb-3">
+                                <input type="submit" class="btn btn-primary" value="Je réserve mon repas">
                             </div>
-                        </div>
-                        <div class="row my-sm-3">
-                            <div class="col-12 col-md-4 mt-3">
-                                <input type="submit" class="btn btn-primary" value="Je réserve">
-                            </div>
-                            <div class="col-12 col-md-8 mt-3">
-                                <a href="./login.php" type="button" class="btn btn-outline-primary ">Je me connecte</a>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <a href="./inscription.php" class="">Je ne suis pas encore inscrit</a>
-                        </div>
+
                     </form>
                 </div>
+
+                <div class="container mt-3 d-flex  justify-content-between align-items-center">
+                    <div><a href="./login.php" class="btn btn-outline-primary my-3">Je me connecte</a>
+                    </div>
+
+                    <div><a href="./index.php">Revenir sur le site</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -163,6 +163,7 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
+<!-- AJout du script en AJAX pour voir les places restantes suivant une date -->
 <script>
     function showCapacity(str) {
         if (str == "") {
@@ -182,4 +183,4 @@
 </script>
 <?php $script = ob_get_clean(); ?>
 
-<?php require('./templates/layout.php'); ?>
+<?php require_once('./templates/layout.php'); ?>
