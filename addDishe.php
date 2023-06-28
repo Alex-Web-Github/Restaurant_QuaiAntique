@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('./libs/utils.php');
-//require_once('./libs/pdo.php');
 require_once('./models/dishe.php');
+require_once('./models/disheManager.php');
 $errors = [];
 $messages = [];
 
@@ -10,9 +10,6 @@ $messages = [];
 if (is_admin() == false) {
     header('location: ./index.php');
 }
-
-$dishes = new Dishe();
-$dishe = [];
 
 if ($_POST) {
     // Vérification si les champs sont définis et NON vides
@@ -29,7 +26,15 @@ if ($_POST) {
         $price = strip_tags($_POST['price']);
 
         // traitement des données du formulaire
-        $dishe = $dishes->addDishe($category, $title, $description, $price);
+        $newDishe = new Dishe();
+        $newDishe->setCategory($category);
+        $newDishe->setTitle($title);
+        $newDishe->setDescription($description);
+        $newDishe->setPrice($price);
+
+        $dishes = new DisheManager();
+        $dishes->addDishe($newDishe);
+
         // Message de confirmation
         $messages[] = 'Votre plat à été ajouté.';
 

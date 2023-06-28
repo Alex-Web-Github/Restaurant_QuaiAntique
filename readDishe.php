@@ -2,6 +2,8 @@
 session_start();
 require_once('./libs/utils.php');
 require_once('./models/dishe.php');
+require_once('./models/disheManager.php');
+
 $errors = [];
 $messages = [];
 
@@ -10,13 +12,14 @@ if (is_admin() == false) {
     header('location: ./index.php');
 }
 
-$dishes = new Dishe();
-$dishe = null;
+$manager = new DisheManager();
+$dishe = new Dishe();
+
 // Vérification si il y a bien une variable $id passée en GET et qu'elle n'est pas vide
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     // "Nettoyage" l'Id envoyé
     $id = strip_tags($_GET['id']);
-    $dishe = $dishes->getDisheById($id);
+    $dishe = $manager->readDisheById($id);
 } else {
     // URL invalide
     header('location: ./404.php');

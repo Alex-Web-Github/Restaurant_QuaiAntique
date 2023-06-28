@@ -3,6 +3,7 @@ session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
 require_once('./models/dishe.php');
+require_once('./models/disheManager.php');
 
 $errors = [];
 $messages = [];
@@ -12,8 +13,7 @@ if (is_admin() == false) {
     header('location: ./index.php');
 }
 
-$dishes = new Dishe();
-$dishe = [];
+$manager = new DisheManager();
 
 // On fait d'abord les vérifications avant d'envoyer les modifications
 if ($_POST) {
@@ -33,22 +33,31 @@ if ($_POST) {
         $price = strip_tags($_POST['price']);
 
         // traitement des données du formulaire
-        //$pdo = dbConnect();
-        $dishe = $dishes->updateDishe($id, $category, $title, $description, $price);
-        // Message de confirmation
-        $messages[] = 'Votre plat à été modifié.';
-        //require_once('./models/close-pdo.php');
+        $newDishe = new Dishe();
+        $newDishe->setId($id);
+        $newDishe->setCategory($category);
+        $newDishe->setTitle($title);
+        $newDishe->setDescription($description);
+        $newDishe->setPrice($price);
+
+        $check = $manager->updateDishe($newDishe);
+        if ($check) {
+            // Message de confirmation
+            $messages[] = 'Votre plat à été modifié.';
+        } else {
+            $errors[] = 'Une erreur est survenue pendant la modification';
+        }
     } else {
+        // Il manque des champs
         $errors[] = 'Le formulaire est incomplet';
     }
 }
-
 
 // Vérification si il y a bien une variable $id passée en GET et qu'elle n'est pas vide
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     // "Nettoyage" l'Id envoyé
     $id = strip_tags($_GET['id']);
-    $dishe = $dishes->getDisheById($id);
+    $dishe = $manager->readDisheById($id);
 } else {
     // URL invalide
     header('location: ./404.php');
