@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once('./libs/config.php');
-require_once('./models/users.php');
+require_once('./models/user.php');
+require_once('./models/userManager.php');
 
 $errors = [];
 $messages = [];
@@ -10,8 +11,8 @@ if (isset($_SESSION['user'])) {
     header('location: ./profil.php');
 }
 
-$users = new Users;
-$check = '';
+$manager = new UserManager;
+//$check = '';
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -22,9 +23,12 @@ if (!empty($_POST)) {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Format d\'Email invalide';
         } else {
-            // Email valide, on lance ensuite la vérification du Password
-            // Vérification du Password
-            $check = $users->verifyUserLoginPassword($_POST['email'], $_POST['password']);
+            // Email valide, instanciation de $checkUser
+            $checkUser = new User();
+            $checkUser->setEmail($_POST['email']);
+            $checkUser->setPassword($_POST['password']);
+            // On lance ensuite la vérification du Password   
+            $check = $manager->verifyUserLoginPassword($checkUser);
             $errors[] = $check;
         }
     } else {
