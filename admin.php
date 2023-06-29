@@ -2,10 +2,13 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
-require_once('./models/bookings.php');
-require_once('./models/users.php');
 require_once('./models/dishe.php');
 require_once('./models/disheManager.php');
+require_once('./models/booking.php');
+require_once('./models/bookingManager.php');
+require_once('./models/user.php');
+require_once('./models/userManager.php');
+
 // Initialisation des messages d'erreur et de succès si besoin
 $errors = [];
 $messages = [];
@@ -20,11 +23,11 @@ $manager = new DisheManager();
 $dishes = $manager->readAllDishe();
 
 // Afficher toutes les réservations
-// $bookings = new Bookings();
-// $bookings = $bookings->getBookings();
+$manager = new BookingManager();
+$bookings = $manager->readAllBooking();
 
 // Afficher tous les utilisateurs enregistrés
-// $users = new Users();
-// $users = $users->getUsers();
+$manager = new UserManager();
+$users = $manager->readAllUser();
 
 require_once('./templates/admin.php');

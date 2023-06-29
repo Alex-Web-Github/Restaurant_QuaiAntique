@@ -2,14 +2,14 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./models/booking.php');
+require_once('./models/bookingManager.php');
 
 // Initialisation des variables
 $errors = [];
 $messages = [];
 $capacity = [];
 
-$newBooking = new Booking();
-$myBooking = [];
+$manager = new BookingManager();
 
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
@@ -17,30 +17,37 @@ if (!empty($_POST)) {
     if (
         isset($_POST['name']) && !empty($_POST['name'])
         && isset($_POST['date']) && !empty($_POST['date'])
-        && isset($_POST['seats']) && !empty($_POST['seats'])
+        && isset($_POST['seat']) && !empty($_POST['seat'])
         && isset($_POST['hour']) && !empty($_POST['hour'])
         && isset($_POST['allergies'])
     ) {
         // On nettoie les données envoyées
         $date = strip_tags($_POST['date']);
-        $seats = strip_tags($_POST['seats']);
+        $seat = strip_tags($_POST['seat']);
         $name = strip_tags($_POST['name']);
         $hour = strip_tags($_POST['hour']);
         $allergies = strip_tags($_POST['allergies']);
 
-        // Vérification de la capacité en couverts
-        $capacity = $newBooking->getCapacity($date);
+        $newBooking = new Booking();
+        $newBooking->setDate($date);
+        $newBooking->setSeat($seat);
+        $newBooking->setName($name);
+        $newBooking->setHour($hour);
+        $newBooking->setAllergies($allergies);
 
-        if ($seats > $capacity) {
+        // Vérification de la capacité en couverts
+        $capacity = $manager->getCapacity($date);
+
+        if ($seat > $capacity) {
             $errors[] = 'Pas assez de couverts disponibles à cette date';
         } else {
 
             // Enregistrement de la réservation en BDD 
-            $myBooking = $newBooking->addBooking($date, $seats, $name, $hour, $allergies);
+            $manager->addBooking($newBooking);
 
-            // Pour afficher les places disponibles juste après une réservation
+            // Pour afficher les places disponibles juste APRÈS une réservation
             if (isset($_POST['date']) && !empty($_POST['date'])) {
-                $capacity = $newBooking->getCapacity($_POST['date']);
+                $capacity = $manager->getCapacity($_POST['date']);
             }
 
             // Message de confirmation de la réservation

@@ -4,58 +4,74 @@ class Booking
 {
     use Model;
 
-    // Pour retourner les données d'une réservation à une date spécifique
-    ///// A TESTER  /////
-    ///
-    function getBookingByDate(string $date)
+    private $id;
+    private $date;
+    private $seat;
+    private $name;
+    private $hour;
+    private $allergies;
+
+    // Mise en place de nos GETTERS
+    public function getId()
     {
-        if (!is_null($this->pdo)) {
-            $stmt = $this->pdo->prepare('SELECT * FROM bookings WHERE date = :date');
-            $stmt->bindParam(':date', $date, pdo::PARAM_STR);
-        }
-        $bookings = [];
-        while ($booking = $stmt->fetchObject()) {
-            $bookings[] = $booking;
-        }
-        return $bookings;
+        return $this->id;
+    }
+    public function getDate()
+    {
+        return $this->date;
+    }
+    public function getSeat()
+    {
+        return $this->seat;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getHour()
+    {
+        return $this->hour;
+    }
+    public function getAllergies()
+    {
+        return $this->allergies;
     }
 
-    // Pour retourner le nb de couverts dispo pour une date donnée
-    public function getCapacity(string $date)
+    // Mise en place de nos SETTERS
+    public function setId($id)
     {
-        if (!is_null($this->pdo)) {
-            $stmt = $this->pdo->prepare('SELECT SUM(couverts) FROM bookings WHERE date = :q');
-            $stmt->bindParam(':q', $date, PDO::PARAM_STR);
-        }
-
-        if ($stmt->execute()) {
-            $res = $stmt->fetchColumn();
-        }
-
-        if (!$res) {
-            // Aucune réservation existante, on affiche la capacité maxi de couverts
-            return SEAT_CAPACITY;
-        } else {
-            // Je fixe la capacité maxi à 20 couverts et on affiche le nombre de couverts restants -->
-            return (SEAT_CAPACITY - $res);
+        if ($id > 0) {
+            $this->id = $id;
         }
     }
-
-    public function addBooking(string $date, int $seats, string $name, string $hour, string $allergies)
+    public function setDate($date)
     {
-        if (!is_null($this->pdo)) {
-            $stmt = $this->pdo->prepare('INSERT INTO bookings(`date`, `couverts`, `nom`, `hour`, `allergies`) VALUES (:date, :seats, :name, :hour, :allergies)');
-
-            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-            $stmt->bindParam(':seats', $seats, PDO::PARAM_INT);
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->bindParam(':hour', $hour, PDO::PARAM_STR);
-            $stmt->bindParam(':allergies', $allergies, PDO::PARAM_STR);
+        if (is_string($date)) {
+            $this->date = $date;
         }
-
-        $res = [];
-        if ($stmt->execute()) {
-            $res = $stmt->fetch();
+    }
+    public function setSeat($seat)
+    {
+        if (is_numeric($seat)) {
+            $this->seat = $seat;
+        }
+    }
+    public function setName($name)
+    {
+        if (is_string($name)) {
+            $this->name = $name;
+        }
+    }
+    public function setHour($hour)
+    {
+        if (is_string($hour)) {
+            $this->hour = $hour;
+        }
+    }
+    public function setAllergies($allergies)
+    {
+        if (is_string($allergies)) {
+            $this->allergies = $allergies;
         }
     }
 }

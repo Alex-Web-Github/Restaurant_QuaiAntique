@@ -40,66 +40,66 @@
                             </div>
 
                             <div class=" col-md-6 mb-3">
-                                <label class="form-label" for="seats">Nombre de couverts</label>
-                                <select id="seats" name="seats" class="form-select">
-                                    <option value="1" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '1')) {
+                                <label class="form-label" for="seat">Nombre de couverts</label>
+                                <select id="seat" name="seat" class="form-select">
+                                    <option value="1" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '1')) {
                                                             echo 'selected';
                                                         } ?>>1</option>
-                                    <option value="2" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '2')) {
+                                    <option value="2" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '2')) {
                                                             echo 'selected';
                                                         } ?>>2</option>
-                                    <option value="3" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '3')) {
+                                    <option value="3" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '3')) {
                                                             echo 'selected';
                                                         } ?>>3</option>
-                                    <option value="4" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '4')) {
+                                    <option value="4" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '4')) {
                                                             echo 'selected';
                                                         } ?>>4</option>
-                                    <option value="5" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '5')) {
+                                    <option value="5" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '5')) {
                                                             echo 'selected';
                                                         } ?>>5</option>
-                                    <option value="6" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '6')) {
+                                    <option value="6" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '6')) {
                                                             echo 'selected';
                                                         } ?>>6</option>
-                                    <option value="7" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '7')) {
+                                    <option value="7" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '7')) {
                                                             echo 'selected';
                                                         } ?>>7</option>
-                                    <option value="8" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '8')) {
+                                    <option value="8" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '8')) {
                                                             echo 'selected';
                                                         } ?>>8</option>
-                                    <option value="9" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '9')) {
+                                    <option value="9" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '9')) {
                                                             echo 'selected';
                                                         } ?>>9</option>
-                                    <option value="10" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '10')) {
+                                    <option value="10" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '10')) {
                                                             echo 'selected';
                                                         } ?>>10</option>
-                                    <option value="11" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '11')) {
+                                    <option value="11" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '11')) {
                                                             echo 'selected';
                                                         } ?>>11</option>
-                                    <option value="12" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '12')) {
+                                    <option value="12" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '12')) {
                                                             echo 'selected';
                                                         } ?>>12</option>
-                                    <option value="13" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '13')) {
+                                    <option value="13" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '13')) {
                                                             echo 'selected';
                                                         } ?>>13</option>
-                                    <option value="14" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '14')) {
+                                    <option value="14" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '14')) {
                                                             echo 'selected';
                                                         } ?>>14</option>
-                                    <option value="15" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '15')) {
+                                    <option value="15" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '15')) {
                                                             echo 'selected';
                                                         } ?>>15</option>
-                                    <option value="16" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '16')) {
+                                    <option value="16" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '16')) {
                                                             echo 'selected';
                                                         } ?>>16</option>
-                                    <option value="17" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '17')) {
+                                    <option value="17" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '17')) {
                                                             echo 'selected';
                                                         } ?>>17</option>
-                                    <option value="18" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '18')) {
+                                    <option value="18" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '18')) {
                                                             echo 'selected';
                                                         } ?>>18</option>
-                                    <option value="19" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '19')) {
+                                    <option value="19" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '19')) {
                                                             echo 'selected';
                                                         } ?>>19</option>
-                                    <option value="20" <?php if (isset($_POST['seats']) && ($_POST['seats'] == '20')) {
+                                    <option value="20" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '20')) {
                                                             echo 'selected';
                                                         } ?>>20</option>
 

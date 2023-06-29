@@ -1,11 +1,11 @@
 <?php
 require_once('./libs/config.php');
-require_once('./models/booking.php');
+require_once('./models/bookingManager.php');
 
-$booking = new Booking();
+$manager = new BookingManager();
 $capacity = [];
 
 $q = $_GET['q'];
-$capacity = $booking->getCapacity($q);
+$capacity = $manager->getCapacity($q);
 // Puis renvoyer en AJAX le nb de places restantes (à la date $q) sur la page booking.php 
 echo $capacity;
