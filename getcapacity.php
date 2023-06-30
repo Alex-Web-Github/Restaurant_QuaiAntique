@@ -1,6 +1,6 @@
 <?php
 require_once('./libs/config.php');
-require_once('./models/bookingManager.php');
+require_once('./src/models/BookingManager.php');
 
 $manager = new BookingManager();
 $capacity = [];

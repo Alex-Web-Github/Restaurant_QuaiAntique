@@ -1,5 +1,5 @@
 <?php
-require_once('models/model.php');
+require_once('./src/models/Model.php');
 
 class BookingManager
 {
@@ -25,7 +25,7 @@ class BookingManager
         }
     }
 
-    function readBookingByDate(string $date)
+    public function readBookingByDate(string $date)
     {
         $stmt = $this->pdo->prepare('SELECT * FROM bookings WHERE date = :date');
         $stmt->bindValue(':date', $date, pdo::PARAM_STR);
@@ -46,8 +46,8 @@ class BookingManager
         }
     }
 
-    // Retourne le nb de couverts dispo pour une date donnée
     public function getCapacity(string $date)
+    // Retourne le nb de couverts dispo pour une date donnée
     {
         $stmt = $this->pdo->prepare('SELECT SUM(seat) FROM bookings WHERE date = :q');
         $stmt->bindValue(':q', $date, PDO::PARAM_STR);
@@ -75,20 +75,49 @@ class BookingManager
         $stmt->execute();
     }
 
-
     public function readBookingById(int $id)
     {
-        // Afficher une réservation selon son Id
-    }
+        $stmt = $this->pdo->prepare('SELECT * FROM bookings WHERE id= :id');
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $data = $stmt->fetch(pdo::FETCH_ASSOC);
+        if (!empty($data)) {
+            $booking = new Booking();
+            $booking->setId($id);
+            $booking->setDate($data['date']);
+            $booking->setSeat($data['seat']);
+            $booking->setName($data['name']);
+            $booking->setHour($data['hour']);
+            $booking->setAllergies($data['allergies']);
 
+            return $booking;
+        } else {
+            // l'ID n'existe pas
+            header('location: ./404.php');
+        }
+    }
 
     public function updateBooking(Booking $booking)
     {
-        // Modifier une réservation
+        $stmt = $this->pdo->prepare('UPDATE bookings SET date= :date, seat= :seat, name= :name, hour= :hour, allergies= :allergies WHERE id= :id;');
+        $stmt->bindValue(':id', $booking->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(':date', $booking->getDate(), PDO::PARAM_STR);
+        $stmt->bindValue(':seat', $booking->getSeat(), PDO::PARAM_INT);
+        $stmt->bindValue(':name', $booking->getName(), PDO::PARAM_STR);
+        $stmt->bindValue(':hour', $booking->getHour(), PDO::PARAM_STR);
+        $stmt->bindValue(':allergies', $booking->getAllergies(), PDO::PARAM_STR);
+
+        $check = $stmt->execute();
+        // Pour vérifier le succès de l'Update
+        return $check;
     }
 
     public function deleteBooking(int $id)
     {
-        // Supprime une réservation 
+        $stmt = $this->pdo->prepare('DELETE FROM bookings WHERE id= :id');
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+        $check = $stmt->execute();
+        // Pour vérifier le succès du Delete
+        return $check;
     }
 }

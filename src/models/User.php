@@ -1,5 +1,5 @@
 <?php
-require_once('models/model.php');
+require_once('./src/models/Model.php');
 
 class User
 {

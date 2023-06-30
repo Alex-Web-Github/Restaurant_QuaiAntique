@@ -1,5 +1,5 @@
 <?php
-require_once('models/model.php');
+require_once('./src/models/Model.php');
 // Pour afficher UN plat selon son Id
 class Dishe
 {

@@ -19,7 +19,7 @@
         <!-- Les plats -->
         <div id="gallery" class="row mt-5 row-cols-1 row-cols-sm-2 row-cols-md-3  g-4">
             <?php foreach ($dishes as $dishe) {
-                include('./templates/dishe_partial.php'); ?>
+                include('./templates/dishe/dishe_partial.php'); ?>
             <?php } ?>
         </div>
     </div>

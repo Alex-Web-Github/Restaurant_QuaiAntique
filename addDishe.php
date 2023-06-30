@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('./libs/utils.php');
-require_once('./models/dishe.php');
-require_once('./models/disheManager.php');
+require_once('./src/models/Dishe.php');
+require_once('./src/models/DisheManager.php');
 $errors = [];
 $messages = [];
 
@@ -45,4 +45,4 @@ if ($_POST) {
     }
 }
 
-require_once('./templates/addDishe.php');
+require_once('./templates/dishe/addDishe.php');

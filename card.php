@@ -2,8 +2,8 @@
 session_start();
 // config.php -> afficher horaires dans le Footer
 require_once('./libs/config.php');
-require_once('./models/dishe.php');
-require_once('./models/disheManager.php');
+require_once('./src/models/Dishe.php');
+require_once('./src/models/DisheManager.php');
 // Initialisation des messages d'erreur et de succès
 $errors = [];
 $messages = [];
@@ -15,4 +15,4 @@ if (empty($dishes)) {
 }
 ?>
 
-<?php require_once('./templates/cards-list.php'); ?>
+<?php require_once('./templates/dishe/cards-list.php'); ?>

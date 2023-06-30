@@ -10,7 +10,7 @@
                 <!-- Affichage du plat sélectionné -->
                 <div class="row mt-5">
                     <?php
-                    include('./templates/dishe_partial.php');
+                    include('./templates/dishe/dishe_partial.php');
                     ?>
                 </div>
                 <div class="row mt-3">

@@ -2,12 +2,12 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
-require_once('./models/dishe.php');
-require_once('./models/disheManager.php');
-require_once('./models/booking.php');
-require_once('./models/bookingManager.php');
-require_once('./models/user.php');
-require_once('./models/userManager.php');
+require_once('./src/models/Dishe.php');
+require_once('./src/models/DisheManager.php');
+require_once('./src/models/Booking.php');
+require_once('./src/models/BookingManager.php');
+require_once('./src/models/User.php');
+require_once('./src/models/UserManager.php');
 
 // Initialisation des messages d'erreur et de succès si besoin
 $errors = [];

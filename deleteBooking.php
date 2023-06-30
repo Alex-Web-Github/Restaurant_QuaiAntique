@@ -2,8 +2,8 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
-require_once('./src/models/Dishe.php');
-require_once('./src/models/DisheManager.php');
+require_once('./src/models/Booking.php');
+require_once('./src/models/BookingManager.php');
 
 $errors = [];
 $messages = [];
@@ -13,16 +13,16 @@ if (is_admin() == false) {
     header('location: ./index.php');
 }
 
-$manager = new DisheManager();
+$manager = new BookingManager();
 // Vérification si Id existe et n'est pas vide dans l'URL
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     // "Nettoyage" de l'Id envoyé
     $id = strip_tags($_GET['id']);
-    $manager->readDisheById($id);
-    $check = $manager->deleteDishe($id);
+    $manager->readBookingById($id);
+    $check = $manager->deleteBooking($id);
     if ($check) {
         // Message de confirmation
-        $messages[] = 'Le plat a bien été supprimé';
+        $messages[] = 'La réservation a bien été supprimée';
     } else {
         $errors[] = 'Une erreur est survenue pendant la suppression';
     }
@@ -31,4 +31,4 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     header('location: ./404.php');
 }
 
-require_once('./templates/dishe/deleteDishe.php');
+require_once('./templates/booking/deleteBooking.php');

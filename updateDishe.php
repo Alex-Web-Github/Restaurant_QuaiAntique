@@ -2,8 +2,8 @@
 session_start();
 require_once('./libs/config.php');
 require_once('./libs/utils.php');
-require_once('./models/dishe.php');
-require_once('./models/disheManager.php');
+require_once('./src/models/Dishe.php');
+require_once('./src/models/DisheManager.php');
 
 $errors = [];
 $messages = [];
@@ -63,4 +63,4 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     header('location: ./404.php');
 }
 
-require_once('./templates/updateDishe.php');
+require_once('./templates/dishe/updateDishe.php');

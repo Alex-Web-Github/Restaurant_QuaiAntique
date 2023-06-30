@@ -12,7 +12,7 @@ if (is_null($dishe)) {
                 <div class="col-12 col-md-10">
                     <!-- Titre -->
                     <h2 class="text-center">Mettre à jour un plat</h2>
-
+                    
                     <!-- Formulaire d'ajout de plat  -->
                     <form action="" method="POST">
                         <!-- On préremplit tous les champs du formulaire avec les valeurs du plat sélectionné par son 'Id' -->
@@ -42,10 +42,8 @@ if (is_null($dishe)) {
                     </form>
                     <!-- Formulaire d'ajout de plat  -->
                 </div>
-
             </div>
         </div>
-
     </section>
 <?php $content = ob_get_clean();
 }

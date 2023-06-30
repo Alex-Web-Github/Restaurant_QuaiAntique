@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('./libs/config.php');
-require_once('./models/user.php');
-require_once('./models/userManager.php');
+require_once('./src/models/User.php');
+require_once('./src/models/UserManager.php');
 
 // Initialisation des 'Array' des messages d'erreur et de succès
 $errors = [];

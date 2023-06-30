@@ -131,7 +131,7 @@
                         <h5 class="text-white-75 pb-2 fw-light">
                             Heures d'ouvertures
                         </h5>
-
+                        <!-- Les horaires sont définis dans une Constante, voir 'config.php' -->
                         <?php foreach (OPENING_HOURS as $key => $hours) { ?>
                             <div class="mb-3">
                                 <div class="text-white-75 fw-lighter"><?= $key ?></div>
