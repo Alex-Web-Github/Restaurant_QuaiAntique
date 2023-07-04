@@ -150,7 +150,7 @@ if (is_null($booking)) {
                             </div>
                             <div class="row">
                                 <div class="col mt-3 mb-3">
-                                    <input type="submit" class="btn btn-primary" value="Enregistrer la modification">
+                                    <input type="submit" class="btn btn-primary" value="Enregistrer les modifications">
                                 </div>
                                 <div class="col mt-3 mb-3">
                                     <a href="./deleteBooking.php?id=<?= $booking->getId() ?>" class="btn btn-outline-danger">Supprimer</a>

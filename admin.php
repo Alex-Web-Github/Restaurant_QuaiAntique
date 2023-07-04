@@ -8,6 +8,8 @@ require_once('./src/models/Booking.php');
 require_once('./src/models/BookingManager.php');
 require_once('./src/models/User.php');
 require_once('./src/models/UserManager.php');
+require_once('./src/models/Gallery.php');
+require_once('./src/models/GalleryManager.php');
 
 // Initialisation des messages d'erreur et de succès si besoin
 $errors = [];
@@ -21,13 +23,14 @@ if (is_admin() == false) {
 // Afficher tous les plats de la Carte
 $manager = new DisheManager();
 $dishes = $manager->readAllDishe();
-
 // Afficher toutes les réservations
 $manager = new BookingManager();
 $bookings = $manager->readAllBooking();
-
 // Afficher tous les utilisateurs enregistrés
 $manager = new UserManager();
 $users = $manager->readAllUser();
+// Afficher tous les images de la Gallery
+$manager = new GalleryManager();
+$galleries = $manager->readAllGallery();
 
 require_once('./templates/admin.php');

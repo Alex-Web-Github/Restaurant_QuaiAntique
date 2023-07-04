@@ -9,3 +9,5 @@ define(
         'Vendredi - Dimanche' => '12:00 - 15:00'
     ],
 );
+// Constante pour définir le chemin vers le répertoire des images
+define('_GALLERY_IMG_PATH_', './upload/');

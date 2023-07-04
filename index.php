@@ -1,5 +1,7 @@
 <?php session_start();
 require_once('./libs/config.php');
+require_once('./src/models/Gallery.php');
+require_once('./src/models/GalleryManager.php');
 ?>
 
 <!-- Définition du Header spécique à la page d'Accueil -->
@@ -52,42 +54,38 @@ require_once('./libs/config.php');
   <div class="container">
     <h2 class="text-center" data-aos="custom-animation">Nos Spécialités</h2>
 
-    <!-- Début du Carousel -->
+    <!-- DÉBUT du Carousel -->
     <div class="row mt-5 justify-content-center align-items-center">
       <div class="col col-sm-10 col-md-10 col-lg-6">
         <div id="carouselIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" class="Slide 4" aria-current="true" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <?php
+            $manager = new GalleryManager();
+            $galleries = $manager->readAllGallery();
+            $count = count($galleries);
+            for ($i = 1; $i < $count; $i++) { ?>
+              <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>"></button>
+            <?php } ?>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="5000">
-              <img src="./upload/tartiflette-au-reblochon-et-aux-lardons.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="La tartiflette au reblochon et aux lardons" alt="tartiflette-au-reblochon-et-aux-lardons">
+            <div class="carousel-item active" data-bs-interval="2000">
+              <img src="./upload/<?= $galleries[0]->getFile() ?>" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="<?= $galleries[0]->getDescription() ?>" alt="<?= $galleries[0]->getDescription() ?>">
             </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="./upload/potchon.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="Le Potchon de Savoie" alt="potchon">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="./upload/crozets-savoyard.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="Les crozets savoyards" alt="crozets-savoyard">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="./upload/fondue-trois-fromages.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="La fondue aux 3 fromages" alt="fondue-trois-fromages">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <img src="./upload/tarte-aux-myrtilles-facile.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="La tarte aux myrtilles sauvages" alt="tarte-aux-myrtilles-sauvages">
-            </div>
-            <div class="carousel-item">
-              <img src="./upload/tartiflette-aux-endives.webp" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="La tartiflette aux endives" alt="tartiflette-aux-endives">
-            </div>
+
+            <?php for ($i = 1; $i < $count; $i++) { ?>
+              <div class="carousel-item " data-bs-interval="2000">
+                <img src="./upload/<?= $galleries[$i]->getFile() ?>" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="<?= $galleries[$i]->getDescription() ?>" alt="<?= $galleries[$i]->getDescription() ?>">
+              </div>
+            <?php
+            }
+
+            ?>
           </div>
-          <!-- Fin du Carousel -->
         </div>
       </div>
     </div>
+    <!-- FIN du Carousel -->
   </div>
 </section>
 
