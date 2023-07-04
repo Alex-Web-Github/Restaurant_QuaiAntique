@@ -1,4 +1,4 @@
-<?php $title = 'Gestation de la Carte'; ?>
+<?php $title = 'Gestion de la Carte'; ?>
 
 <?php ob_start(); ?>
 <section class="d-flex vh-100">

@@ -15,7 +15,7 @@ window.onload = () => {
 			filter.classList.add("active");
 			let tag = this.id; // on identifie l'Id du filtre cliqué
 
-			let dishes = document.querySelectorAll("#gallery div.col");
+			let dishes = document.querySelectorAll("#cards_gallery div.col");
 			//console.log(dishes);
 			for (let dishe of dishes) {
 				dishe.classList.add("inactive"); // on cache tous les plats au Click

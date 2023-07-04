@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('./libs/utils.php');
+require_once('./libs/config.php');
 require_once('./src/models/Dishe.php');
 require_once('./src/models/DisheManager.php');
 $errors = [];

@@ -2,9 +2,6 @@
 @import "https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:wght@400;600&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap";
 
-html {
-	scroll-behavior: smooth;
-}
 body {
 	font-family: "Hind Madurai", sans-serif;
 }
@@ -40,8 +37,7 @@ header h1 {
 }
 
 // CSS du filtre des Menus de la page 'card.php'
-
-#gallery .col.inactive {
+#cards_gallery .col.inactive {
 	display: none;
 }
 
