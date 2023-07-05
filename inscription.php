@@ -17,7 +17,7 @@ if (isset($_SESSION['user'])) {
 // On vérifie que le formulaire a bien été soumis
 if (!empty($_POST)) {
     // Vérification du bon remplissage des champs ET avec des champs non vides
-    if (isset($_POST['email'], $_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+    if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['allergies'], $_POST['guest']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['guest'])) {
 
         // Vérification si l'email est bien un email (le type 'email' n'est pas suffisant car modifiable en Front avec l'inspecteur de code)
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -26,14 +26,26 @@ if (!empty($_POST)) {
 
             // Alors on peut commencer l'inscription du nouvel utilisateur dans la BDD
             $newUser = new User();
+            $role = 'client'; // Valeur par défaut
+            $firstname = strip_tags($_POST['firstname']);
+            $lastname = strip_tags($_POST['lastname']);
+            $allergies = strip_tags($_POST['allergies']);
+            $guest = strip_tags($_POST['guest']);
+
+            $newUser->setFirstname($firstname);
+            $newUser->setLastname($lastname);
             $newUser->setEmail($_POST['email']);
             $newUser->setPassword($_POST['password']);
+            $newUser->setRole($role);
+            $newUser->setAllergies($allergies);
+            $newUser->setGuest($guest);
 
-            $res = $manager->addUser($newUser);
+            $check = $manager->addUser($newUser);
 
-            if ($res) {
-                // Vérification si l'inscription s'est bien déroulée
-                $messages[] = 'Merci pour votre inscription ! Vous pouvez vous connecter';
+            // Vérification si l'inscription s'est bien déroulée
+            if ($check) {
+                // Redirection vers la page Profil
+                header('location: ./login.php');
             } else {
                 // Problème durant l'insertion en BDD
                 $errors[] = 'Une erreur s\'est produite lors de votre inscription';

@@ -10,6 +10,7 @@ class Booking
     private $name;
     private $hour;
     private $allergies;
+    private $userId; // Renvoie vers l'Id du 'User' si il est bien inscrit 
 
     // Mise en place de nos GETTERS
     public function getId()
@@ -35,6 +36,10 @@ class Booking
     public function getAllergies()
     {
         return $this->allergies;
+    }
+    public function getUserId()
+    {
+        return $this->userId;
     }
 
     // Mise en place de nos SETTERS
@@ -72,6 +77,12 @@ class Booking
     {
         if (is_string($allergies)) {
             $this->allergies = $allergies;
+        }
+    }
+    public function setUserId($userId)
+    {
+        if (is_numeric($userId)) {
+            $this->userId = $userId;
         }
     }
 }

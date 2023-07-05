@@ -11,9 +11,9 @@ class GalleryManager
         while ($data = $stmt->fetch(pdo::FETCH_ASSOC)) {
             $gallery = new Gallery();
             $gallery->setId($data['id']);
-            $gallery->setName($data['name']);
-            $gallery->setDescription($data['description']);
-            $gallery->setFile($data['file']);
+            $gallery->setName($data['gal_name']);
+            $gallery->setDescription($data['gal_description']);
+            $gallery->setFile($data['gal_file']);
             $galleries[] = $gallery;
         }
         if (!empty($galleries)) {
@@ -23,7 +23,7 @@ class GalleryManager
 
     public function addGallery(Gallery $gallery)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO galleries(`name`, `description`, `file`) VALUES (:name, :description, :file)');
+        $stmt = $this->pdo->prepare('INSERT INTO galleries(`gal_name`, `gal_description`, `gal_file`) VALUES (:name, :description, :file)');
         $stmt->bindValue(':name', $gallery->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':description', $gallery->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(':file', $gallery->getFile(), PDO::PARAM_STR);
@@ -41,9 +41,9 @@ class GalleryManager
         if (!empty($data)) {
             $gallery = new Gallery();
             $gallery->setId($id);
-            $gallery->setName($data['name']);
-            $gallery->setDescription($data['description']);
-            $gallery->setFile($data['file']);
+            $gallery->setName($data['gal_name']);
+            $gallery->setDescription($data['gal_description']);
+            $gallery->setFile($data['gal_file']);
             return $gallery;
         } else {
             // l'ID n'existe pas
@@ -53,7 +53,7 @@ class GalleryManager
 
     public function updateGallery(Gallery $gallery)
     {
-        $stmt = $this->pdo->prepare('UPDATE galleries SET name= :name, description= :description, file= :file WHERE id= :id;');
+        $stmt = $this->pdo->prepare('UPDATE galleries SET gal_name= :name, gal_description= :description, gal_file= :file WHERE id= :id;');
         $stmt->bindValue(':id', $gallery->getId(), PDO::PARAM_INT);
         $stmt->bindValue(':name', $gallery->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':description', $gallery->getDescription(), PDO::PARAM_STR);

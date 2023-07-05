@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('./libs/config.php');
+require_once('./libs/utils.php');
 require_once('./src/models/Booking.php');
 require_once('./src/models/BookingManager.php');
 
@@ -40,6 +41,14 @@ if (!empty($_POST)) {
             $newBooking->setName($name);
             $newBooking->setHour($hour);
             $newBooking->setAllergies($allergies);
+
+            if (is_client() || is_admin()) {
+                $clientId = $_SESSION['user']['id'];
+            } else {
+                $clientId = null;
+            }
+            $newBooking->setUserId($clientId);
+
             // Enregistrement de la réservation en BDD 
             $manager->addBooking($newBooking);
 

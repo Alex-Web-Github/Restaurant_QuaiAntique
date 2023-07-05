@@ -5,7 +5,6 @@
     <div class="container ">
         <div class="row mt-5 justify-content-center">
             <div class="col col-lg-8">
-
                 <!-- Titre -->
                 <h2 class="text-center">Faites votre réservation</h2>
 
@@ -29,7 +28,13 @@
                         <div class="row justify-content-center">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label" for="name">Votre Nom</label>
-                                <input class="form-control" type="text" name="name" id="name">
+                                <input class="form-control" type="text" name="name" id="name" value="<?php if (is_client() || is_admin()) {
+                                                                                                            echo $_SESSION['user']['lastname'];
+                                                                                                        } else {
+                                                                                                            if (isset($_POST['lastname'])) {
+                                                                                                                echo $_POST['lastname'];
+                                                                                                            }
+                                                                                                        } ?>">
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -42,66 +47,149 @@
                             <div class=" col-md-6 mb-3">
                                 <label class="form-label" for="seat">Nombre de couverts</label>
                                 <select id="seat" name="seat" class="form-select">
-                                    <option value="1" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '1')) {
+
+                                    <option value="1" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '1') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '1') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>1</option>
-                                    <option value="2" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '2')) {
+                                    <option value="2" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '2') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '2') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>2</option>
-                                    <option value="3" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '3')) {
+                                    <option value="3" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '3') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '3') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>3</option>
-                                    <option value="4" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '4')) {
+                                    <option value="4" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '4') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '4') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>4</option>
-                                    <option value="5" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '5')) {
+                                    <option value="5" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '5') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '5') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>5</option>
-                                    <option value="6" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '6')) {
+                                    <option value="6" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '6') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '6') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>6</option>
-                                    <option value="7" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '7')) {
+                                    <option value="7" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '7') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '7') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>7</option>
-                                    <option value="8" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '8')) {
+                                    <option value="8" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '8') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '8') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>8</option>
-                                    <option value="9" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '9')) {
+                                    <option value="9" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '9') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '9') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>9</option>
-                                    <option value="10" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '10')) {
+                                    <option value="10" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '10') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '10') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>10</option>
-                                    <option value="11" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '11')) {
+                                    <option value="11" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '11') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '11') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>11</option>
-                                    <option value="12" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '12')) {
+                                    <option value="12" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '12') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '12') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>12</option>
-                                    <option value="13" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '13')) {
+                                    <option value="13" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '13') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '13') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>13</option>
-                                    <option value="14" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '14')) {
+                                    <option value="14" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '14') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '14') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>14</option>
-                                    <option value="15" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '15')) {
+                                    <option value="15" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '15') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '15') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>15</option>
-                                    <option value="16" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '16')) {
+                                    <option value="16" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '16') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '16') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>16</option>
-                                    <option value="17" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '17')) {
+                                    <option value="17" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '17') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '17') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>17</option>
-                                    <option value="18" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '18')) {
+                                    <option value="18" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '18') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '18') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>18</option>
-                                    <option value="19" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '19')) {
+                                    <option value="19" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '19') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '19') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>19</option>
-                                    <option value="20" <?php if (isset($_POST['seat']) && ($_POST['seat'] == '20')) {
+                                    <option value="20" <?php if ((is_client() || is_admin()) && $_SESSION['user']['guest'] == '20') {
                                                             echo 'selected';
+                                                        } else {
+                                                            if (isset($_POST['guest']) && $_POST['guest'] == '20') {
+                                                                echo 'selected';
+                                                            }
                                                         } ?>>20</option>
+
+
 
                                 </select>
                             </div>
@@ -137,23 +225,26 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label" for="allergies">Eventuelle(s) allergie(s) à mentionner?</label>
-                                <input class="form-control" type="text" name="allergies" id="allergies" placeholder="non" value="<?php if (isset($_POST['allergies'])) {
-                                                                                                                                        echo $_POST['allergies'];
+                                <input class="form-control" type="text" name="allergies" id="allergies" placeholder="non" value="<?php if (is_client() || is_admin()) {
+                                                                                                                                        echo $_SESSION['user']['allergies'];
+                                                                                                                                    } else {
+                                                                                                                                        if (isset($_POST['allergies'])) {
+                                                                                                                                            echo $_POST['allergies'];
+                                                                                                                                        }
                                                                                                                                     } ?>">
                             </div>
-                            <div class="col-md-6 mt-3 mb-3">
+                            <div class="col mt-3 mb-3 text-left">
                                 <input type="submit" class="btn btn-primary" value="Je réserve mon repas">
                             </div>
+                            <div class="container d-flex  justify-content-between align-items-center">
+                                <div><a href="./login.php" class="btn btn-outline-primary my-3">Je me connecte</a>
+                                </div>
 
+                                <div><a href="./index.php">Revenir sur le site</a>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-                </div>
-
-                <div class="container mt-3 d-flex  justify-content-between align-items-center">
-                    <div><a href="./login.php" class="btn btn-outline-primary my-3">Je me connecte</a>
-                    </div>
-
-                    <div><a href="./index.php">Revenir sur le site</a>
-                    </div>
                 </div>
 
             </div>
