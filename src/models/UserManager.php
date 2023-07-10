@@ -34,7 +34,6 @@ class UserManager
         $password = $user->getPassword();
         // Hash du MdP basé sur l'algo. Bcrypt mais évolutif
         $password = password_hash($password, PASSWORD_DEFAULT);
-
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
         $email = $user->getEmail();
@@ -49,23 +48,9 @@ class UserManager
         $stmt->bindValue(':role', $role, PDO::PARAM_STR);
         $stmt->bindValue(':allergies', $allergies, PDO::PARAM_STR);
         $stmt->bindValue(':guest', $guest, PDO::PARAM_STR);
-        $stmt->execute();
+        $check = $stmt->execute();
+        return $check;
 
-        // On récupère l'Id du dernier utiisateur
-        $id = $this->pdo->lastInsertId();
-
-        // On stocke ses infos dans un cookie de Session (SAUF le MdP !!!)
-        $_SESSION['user'] = [
-            "id" => $id,
-            "firstname" => $firstname,
-            "lastname" => $lastname,
-            "email" => $email,
-            "role" => $role,
-            "allergies" => $allergies,
-            "guest" => $guest,
-        ];
-        // Redirection vers la page Profil
-        header('location: ./login.php');
     }
 
     public function verifyUserLoginPassword(User $checkUser)

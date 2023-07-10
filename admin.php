@@ -15,7 +15,7 @@ require_once('./src/models/GalleryManager.php');
 $errors = [];
 $messages = [];
 
-// Rendre la page 'admin.php' inaccessible si l'utilisateur n'est pas connecté OU si connecté en tant que 'client'
+// Rendre la page 'admin.php' seulement accessible à l'Admin
 if (is_admin() == false) {
     header('location: ./index.php');
 }

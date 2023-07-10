@@ -40,11 +40,12 @@ if (!empty($_POST)) {
             $newUser->setAllergies($allergies);
             $newUser->setGuest($guest);
 
-            $res = $manager->addUser($newUser);
+            $check = $manager->addUser($newUser);
 
-            if ($res) {
-                // Vérification si l'inscription s'est bien déroulée
-                $messages[] = 'Merci pour votre inscription ! Vous pouvez vous connecter';
+            // Vérification si l'inscription s'est bien déroulée
+            if ($check) {
+                // Redirection vers la page Profil
+                header('location: ./login.php');
             } else {
                 // Problème durant l'insertion en BDD
                 $errors[] = 'Une erreur s\'est produite lors de votre inscription';
