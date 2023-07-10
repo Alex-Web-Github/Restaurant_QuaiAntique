@@ -13,19 +13,19 @@
                 <form action="" method="POST">
                     <div class="mb-3 mt-5">
                         <label class="for-label" for="category">Catégorie du plat</label>
-                        <input class="form-control" type="text" name="category" id="category">
+                        <input class="form-control" type="text" name="category" id="category" value="<?= $_POST['category'] ?? null ?>">
                     </div>
                     <div class="mb-3">
                         <label class="for-label" for="title">Intitulé du plat</label>
-                        <input class="form-control" type="text" name="title" id="title">
+                        <input class="form-control" type="text" name="title" id="title" value="<?= $_POST['title'] ?? null ?>">
                     </div>
                     <div class="mb-3">
                         <label class="for-label" for="description">Description</label>
-                        <input class="form-control" type="text" name="description" id="title">
+                        <input class="form-control" type="text" name="description" id="title" value="<?= $_POST['description'] ?? null ?>">
                     </div>
                     <div class="mb-3">
                         <label class="for-label" for="price">Tarif</label>
-                        <input class="form-control" type="" name="price" id="price">
+                        <input class="form-control" type="" name="price" id="price" value="<?= $_POST['price'] ?? null ?>">
                     </div>
                     <input type="submit" class="btn btn-primary" value="Enregistrer ce plat">
                 </form>

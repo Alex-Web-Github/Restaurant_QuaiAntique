@@ -4,9 +4,9 @@ require_once('./src/models/Gallery.php');
 require_once('./src/models/GalleryManager.php');
 ?>
 
-<!-- Définition du Header spécique à la page d'Accueil -->
-
+<!-- DÉBUT du Header spécifique à la page d'Accueil -->
 <?php ob_start(); ?>
+
 <header style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(0,0,0,1) 80%, rgba(57,44,30,1) 100%); position: relative; z-index: 0;">
   <div class="d-flex flex-column min-vh-100 pt-10 pt-md-8 pb-7 pb-md-0">
     <div class="container my-auto">
@@ -44,58 +44,21 @@ require_once('./src/models/GalleryManager.php');
   </div>
 </header>
 <?php $header = ob_get_clean(); ?>
+<!-- FIN du Header spécifique à la page d'Accueil -->
 
-<!-- DÉBUT Définition du contenu de la page d'Accueil -->
-
+<!-- DÉBUT du contenu de la page d'Accueil -->
 <?php ob_start(); ?>
+
+<!-- Inclusion du code du Carousel d'images -->
+<?php
+$manager = new GalleryManager();
+$galleries = $manager->readAllGallery();
+include('./templates/gallery/carousel.php');
+?>
+<!-- Inclusion du code du Carousel d'images -->
+
+<!-- DÉBUT Section A Propos -->
 <hr class="hr-custom">
-
-<section class="mb-3">
-  <div class="container">
-    <h2 class="text-center" data-aos="custom-animation">Nos Spécialités</h2>
-
-    <!-- DÉBUT du Carousel -->
-    <div class="row mt-5 justify-content-center align-items-center">
-      <div class="col col-sm-10 col-md-10 col-lg-6">
-        <div id="carouselIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <?php
-            $manager = new GalleryManager();
-            $galleries = $manager->readAllGallery();
-            $count = count($galleries);
-            for ($i = 1; $i < $count; $i++) { ?>
-              <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>"></button>
-            <?php } ?>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="2000">
-              <img src="./upload/<?= $galleries[0]->getFile() ?>" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="<?= $galleries[0]->getDescription() ?>" alt="<?= $galleries[0]->getDescription() ?>">
-            </div>
-
-            <?php for ($i = 1; $i < $count; $i++) { ?>
-              <div class="carousel-item " data-bs-interval="2000">
-                <img src="./upload/<?= $galleries[$i]->getFile() ?>" class="d-block w-100 rounded" data-toggle="tooltip" data-placement="bottom" title="<?= $galleries[$i]->getDescription() ?>" alt="<?= $galleries[$i]->getDescription() ?>">
-              </div>
-            <?php
-            }
-
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- FIN du Carousel -->
-  </div>
-</section>
-
-<section class="mb-3">
-  <div class="container text-center mt-5">
-    <a class="btn btn-primary btn-lg mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
-  </div>
-</section>
-<hr class="hr-custom">
-
 <section id="about" class="mb-3">
   <div class="container">
     <!-- Titre -->
@@ -113,9 +76,10 @@ require_once('./src/models/GalleryManager.php');
     </div>
   </div>
 </section>
+<!-- FIN Section A Propos -->
 
+<!-- DÉBUT Section des Menus -->
 <hr class="hr-custom">
-
 <section id="menus" class="mb-3">
   <div class="container">
     <!-- Titre -->
@@ -179,8 +143,9 @@ require_once('./src/models/GalleryManager.php');
     </div>
   </div>
 </section>
+<!-- FIN Section des Menus -->
 
 <?php $content = ob_get_clean(); ?>
-<!-- FIN Définition du contenu de la page d'Accueil -->
+<!-- FIN du contenu de la page d'Accueil -->
 
 <?php require_once('./templates/layout.php'); ?>

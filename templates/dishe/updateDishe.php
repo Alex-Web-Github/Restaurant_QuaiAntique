@@ -13,7 +13,7 @@ if (is_null($dishe)) {
                     <!-- Titre -->
                     <h2 class="text-center">Mettre à jour un plat</h2>
                     
-                    <!-- Formulaire d'ajout de plat  -->
+                    <!-- Formulaire de modification du plat  -->
                     <form action="" method="POST">
                         <!-- On préremplit tous les champs du formulaire avec les valeurs du plat sélectionné par son 'Id' -->
                         <div class="mb-3 mt-5 ">
@@ -40,7 +40,7 @@ if (is_null($dishe)) {
                             <a href="./admin.php">Retour page Admin.</a>
                         </div>
                     </form>
-                    <!-- Formulaire d'ajout de plat  -->
+                    <!-- Formulaire de modification du plat  -->
                 </div>
             </div>
         </div>

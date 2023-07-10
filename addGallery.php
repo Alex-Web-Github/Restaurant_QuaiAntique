@@ -6,12 +6,10 @@ require_once('./src/models/Gallery.php');
 require_once('./src/models/GalleryManager.php');
 $errors = [];
 $messages = [];
-
 // Rendre la page 'admin.php' inaccessible si l'utilisateur n'est pas connecté OU si connecté en tant que 'client'
 if (is_admin() == false) {
     header('location: ./index.php');
 }
-
 // Les types MIME autorisés sont stockés dans une variable
 $authorizedMimeTypes = [
     'png' => 'image/png',
@@ -53,7 +51,8 @@ if ($_POST) {
     try {
         $filename = $_POST['filename'] ?? null;
         $uploadedFile = $_FILES['uploaded_file'] ?? [];
-        // Vérification du bon téléchargement et bon format de fichier
+        // Vérification du téléchargement par la méthode $_POST 
+        // et au bon format de fichier
         if (!isUploadSuccessful($uploadedFile)) {
             throw new RuntimeException('Le téléchargement a échoué : aucun fichier sélectionné');
         }
@@ -66,7 +65,6 @@ if ($_POST) {
         }
         // Vérifier que le nom de l'image du formulaire ne contient que des caractères autorisés 
         if (!preg_match('/^[\w~]+$/', $filename)) {
-            // PROBLEME : n'accepte pas les TIRETS ???!!!! //
             throw new RuntimeException('Le nom de l\'image ne doit pas être vide et ne contenir que des lettres, chiffres, ou des underscores');
         }
         // Vérifier que le champs 'Description' est rempli et non nul
@@ -89,12 +87,12 @@ if ($_POST) {
     }
 
     if (!$errors) {
-        // Sauvegarde dans la BDD du chemin vers cette image (qui est stockée physiquement sur le serveur)
+        // Alors sauvegarde dans la BDD du chemin vers cette image (qui est stockée physiquement sur le serveur)
 
         // On nettoie le champs 'Description' envoyées
         $description = strip_tags($_POST['description']);
 
-        // traitement des données du formulaire
+        // Traitement des données du formulaire
         $newGallery = new Gallery();
         $newGallery->setName($filename);
         $newGallery->setDescription($description);
