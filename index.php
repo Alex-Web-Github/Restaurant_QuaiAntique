@@ -49,13 +49,13 @@ require_once('./src/models/GalleryManager.php');
 <!-- DÉBUT du contenu de la page d'Accueil -->
 <?php ob_start(); ?>
 
-<!-- Inclusion du code du Carousel d'images -->
+<!-- DÉBUT Inclusion du code du Carousel d'images -->
 <?php
 $manager = new GalleryManager();
 $galleries = $manager->readAllGallery();
 include('./templates/gallery/carousel.php');
 ?>
-<!-- Inclusion du code du Carousel d'images -->
+<!-- FIN Inclusion du code du Carousel d'images -->
 
 <!-- DÉBUT Section A Propos -->
 <hr class="hr-custom">
@@ -85,62 +85,36 @@ include('./templates/gallery/carousel.php');
     <!-- Titre -->
     <h2 class="text-center" data-aos="custom-animation">Les Menus</h2>
 
-    <!-- Contenu -->
     <div class="row mx-0 mt-5 row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <?php
+      // Bouclage sur la constante "MENUS_DATA" du fichier config.php 
+      foreach (MENUS_DATA as $key => $values) {
+        if (is_Array($values)) { ?>
 
-      <!-- Menu du Marché -->
-      <div class="col">
-        <div class="card">
-          <h4 class="card-header text-center">MENU DU MARCHÉ</h4>
-          <img src="./assets/img/potchon.webp" class="img-fluid" alt="Menu du Marché">
-          <div class="card-body py-3">
-            <p class="text-center fst-italic">Menu concocté avec les ingrédients de saison, achetés au marché Bio.</p>
-            <h5 class="card-title ">Formule dîner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat + Dessert : 20 €</h6>
-            <p class="card-text">Du lundi au Samedi soir</p>
-            <h5 class="card-title">Formule déjeuner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat ou plat + Dessert : 14 €</h6>
-            <p class="card-text">Du lundi au Samedi midi</p>
+          <!-- DÉBUT affichage d'un menu -->
+          <div class="col" data-aos="<?= $values['data-aos'] ?>" data-aos-delay="<?= $values['data-aos-delay'] ?>">
+            <div class="card">
+              <h4 class="card-header text-center"><?= $key ?></h4>
+              <img src="<?= $values['img_path'] ?>" class="img-fluid" alt="Menu du Marché">
+              <div class="card-body py-3">
+                <p class="text-center fst-italic"><?= $values['description'] ?></p>
+                <h5 class="card-title ">Formule dîner</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat + Dessert : <?= $values['evening-price'] ?> €</h6>
+                <p class="card-text">Du lundi au Samedi soir</p>
+                <h5 class="card-title">Formule déjeuner</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat ou plat + Dessert : <?= $values['noon-price'] ?> €</h6>
+                <p class="card-text">Du lundi au Samedi midi</p>
+              </div>
+            </div>
           </div>
+          <!-- FIN affichage d'un menu -->
 
-        </div>
-      </div>
-
-      <!-- Menu du Savoyard -->
-      <div class="col">
-        <div class="card border-primary">
-          <h4 class="card-header text-center">MENU SAVOYARD</h4>
-          <img src="./assets/img/fondue-trois-fromages.webp" class="img-fluid" alt="Menu Savoyard">
-          <div class="card-body py-3">
-            <p class="text-center fst-italic">Fondue ou raclette aux 3 fromages avec charcuterie AOP, vin de Pays.</p>
-            <h5 class="card-title">Formule dîner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat + Dessert : 29 €</h6>
-            <p class="card-text">Du lundi au Samedi soir</p>
-            <h5 class="card-title">Formule déjeuner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat ou plat + Dessert : 23 €</h6>
-            <p class="card-text">Du lundi au Samedi midi</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menu Gourmet -->
-      <div class="col">
-        <div class="card">
-          <h4 class="card-header text-center">MENU GOURMET</h4>
-          <img src="./assets/img/tartiflette-au-reblochon-et-aux-lardons.webp" class="img-fluid" alt="Menu Gourmet">
-          <div class="card-body py-3">
-            <p class="text-center fst-italic">Truite du lac et poulet de Bresse (sauce aux champignons), vin de Pays.</p>
-            <h5 class="card-title">Formule dîner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat + Dessert : 39 €</h6>
-            <p class="card-text">Du lundi au Samedi soir</p>
-            <h5 class="card-title">Formule déjeuner</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Entrée + Plat ou plat + Dessert : 33 €</h6>
-            <p class="card-text">Du lundi au Samedi midi</p>
-          </div>
-        </div>
-      </div>
-
+      <?php }
+      }
+      ?>
     </div>
+
+  </div>
   </div>
 </section>
 <!-- FIN Section des Menus -->

@@ -90,7 +90,7 @@
     <!----- FOOTER ----->
     <footer class="py-7 py-md-9 ">
         <div class="container-fluid  bg-success">
-            <div class="container-lg mt-5 py-3 px-3">
+            <div class="container-lg mt-5 py-4 px-3">
                 <div class="row gx-6">
                     <!-- presentation -->
                     <div class="col-12 col-md-4 px-md-5 mb-3 mb-md-0">
@@ -139,8 +139,6 @@
                             </div>
                         <?php
                         } ?>
-
-
                     </div>
                 </div>
             </div>
