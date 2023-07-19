@@ -1,8 +1,7 @@
 //
-//Import de toutes feuilles de styles.scss
+// Import de toutes les fichiers .scss
 //
-
-@import "_bootstrap-variables.scss";
-@import "_bootstrap-modules.scss";
-@import "_aos.scss";
-@import "_custom.scss";
+@import "bootstrap-variables";
+@import "bootstrap-modules";
+@import "aos";
+@import "custom";
