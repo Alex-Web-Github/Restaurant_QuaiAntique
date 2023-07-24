@@ -6,7 +6,9 @@
   "reportNeedlessDisables": true,
   "overrides": [
     {
-      "files": "**/*.scss",
+      "files": [
+        "**/*.scss"
+      ],
       "rules": {
         "scss/selector-no-union-class-name": true
       }

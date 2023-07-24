@@ -1,7 +1,7 @@
-
 // Required
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/utilities";
@@ -48,18 +48,17 @@
 // Custom styles
 //
 .row {
-	margin-right: 0; // Annule flottement horizontal (desktop et mobile)
-	margin-left: 0; // Annule flottement horizontal (desktop et mobile)
+  margin-right: 0; // Annule flottement horizontal (desktop et mobile)
+  margin-left: 0; // Annule flottement horizontal (desktop et mobile)
 }
 .navbar-nav {
-	--bs-nav-link-padding-x: 0;
-	--bs-nav-link-padding-y: 1rem;
+  --bs-nav-link-padding-x: 0;
+  --bs-nav-link-padding-y: 1rem;
 }
 .navbar-dark {
-	--bs-navbar-color: rgba(255, 255, 255, 0.75);
-	--bs-navbar-hover-color: #906427;
-	--bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-	--bs-navbar-active-color: #906427;
-	--bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-
+  --bs-navbar-color: rgba(255, 255, 255, .75);
+  --bs-navbar-hover-color: #906427;
+  --bs-navbar-disabled-color: rgba(255, 255, 255, .25);
+  --bs-navbar-active-color: #906427;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, .1);
 }

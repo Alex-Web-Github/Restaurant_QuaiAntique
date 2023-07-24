@@ -66,12 +66,12 @@ include('./templates/gallery/carousel.php');
 
     <!-- Contenu -->
     <div class="row mt-5 justify-content-center align-items-center">
-      <div class="col-md-8  px-3 px-md-5 py-2">
+      <div class="col-md-8  px-3 px-md-5 py-2" data-aos="fade-up" data-aos-delay="0">
         <p class="lead">Le Chef Arnaud Michant aime passionnément les produits - et les producteurs - de la Savoie. </br>Le Quai Antique est installé à Chambéry et propose au déjeuner comme au dîner une expérience gastronomique, à travers une cuisine sans artifice.
           </br>Plus encore que ses deux autres restaurants, Arnaud Michant le voit comme une promesse d’un voyage dans son univers culinaire.
         </p>
       </div>
-      <div class="col-md-4"><img class="img-fluid rounded" src="./assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><img class="img-fluid rounded" src="./assets/img/photo-chef-michant.webp" alt="Le Chef Arnaud Michant"></div>
 
     </div>
   </div>
@@ -92,8 +92,8 @@ include('./templates/gallery/carousel.php');
         if (is_Array($values)) { ?>
 
           <!-- DÉBUT affichage d'un menu -->
-          <div class="col" data-aos="<?= $values['data-aos'] ?>" data-aos-delay="<?= $values['data-aos-delay'] ?>">
-            <div class="card">
+          <div class="col">
+            <div class="card" data-aos="<?= $values['data-aos'] ?>" data-aos-delay="<?= $values['data-aos-delay'] ?>">
               <h4 class="card-header text-center"><?= $key ?></h4>
               <img src="<?= $values['img_path'] ?>" class="img-fluid" alt="Menu du Marché">
               <div class="card-body py-3">
