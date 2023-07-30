@@ -52,7 +52,8 @@
   margin-left: 0; // Annule flottement horizontal (desktop et mobile)
 }
 .navbar-nav {
-  --bs-nav-link-padding-x: 0;
+  --bs-nav-link-font-size: 1.1rem;
+  --bs-nav-link-padding-x: .8rem;
   --bs-nav-link-padding-y: 1rem;
 }
 .navbar-dark {
@@ -61,4 +62,13 @@
   --bs-navbar-disabled-color: rgba(255, 255, 255, .25);
   --bs-navbar-active-color: #906427;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, .1);
+}
+
+.navbar {
+  background-color: rgba(22, 17, 17, .76);
+}
+@media screen and (max-width: 992px) {
+  .navbar {
+    background-color: rgb(25, 20, 20);
+  }
 }

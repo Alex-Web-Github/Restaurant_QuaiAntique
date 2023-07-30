@@ -29,9 +29,9 @@ require_once('./src/models/GalleryManager.php');
           </p>
 
           <!-- Buttons -->
-          <div class="mt-5 d-grid gap-4 d-sm-block" data-aos="custom-animation" data-aos-delay="4600">
+          <div class="mt-5 d-grid gap-4 d-sm-block mx-5 mx-sm-0" data-aos="custom-animation" data-aos-delay="4600">
             <a class="btn btn-primary mx-3 text-white" href="./booking.php" type="button">Réserver une table</a>
-            <a class="btn btn-outline-light  mx-3" href="./card.php" type="button">Voir la carte</a>
+            <a class="btn btn-secondary mx-3" href="./card.php" type="button">Découvrez notre carte</a>
           </div>
 
         </div>
@@ -95,7 +95,7 @@ include('./templates/gallery/carousel.php');
           <div class="col">
             <div class="card" data-aos="<?= $values['data-aos'] ?>" data-aos-delay="<?= $values['data-aos-delay'] ?>">
               <h4 class="card-header text-center"><?= $key ?></h4>
-              <img src="<?= $values['img_path'] ?>" class="img-fluid" alt="Menu du Marché">
+              <img src="<?= $values['img_path'] ?>" class="img-fluid" alt="<?= $key ?>">
               <div class="card-body py-3">
                 <p class="text-center fst-italic"><?= $values['description'] ?></p>
                 <h5 class="card-title ">Formule dîner</h5>
